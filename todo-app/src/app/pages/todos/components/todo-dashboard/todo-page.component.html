@@ -1,0 +1,5 @@
+<span class="todo-title">Todos (100 000)</span>
+
+<div class="todo-card-container" >
+  <app-todo-card *ngFor="let todo of todos; trackBy: trackById" [todo]="todo"></app-todo-card>
+</div>

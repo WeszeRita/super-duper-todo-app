@@ -1,0 +1,16 @@
+<div class="todo-card">
+  <span class="tag">Status:</span>
+  <span class="info todo-status">{{ todo.status }}</span>
+
+  <span class="tag">Created at:</span>
+  <span class="info">{{ todo.createdAt }}</span>
+
+  <span class="tag">Title:</span>
+  <span class="info">{{ todo.title }}</span>
+
+  <span class="tag">Description:</span>
+  <span class="info">{{ todo.description }}</span>
+
+  <button class="btn-delete" (click)="pin(todo.id)">Pin it!</button>
+  <button class="btn-delete" (click)="delete(todo.id)">Delete</button>
+</div>
