@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ITodo, Status } from '../../../../../shared';
+import { ITodo, Status } from 'src/shared';
 
 @Component({
   selector: 'app-todo-page',
@@ -37,6 +37,10 @@ export class TodoPageComponent {
       updatedAt: null,
     }
   ]
+
+  buildTranslationKey(relativeKey: string): string {
+    return `todo-page.${ relativeKey }`;
+  }
 
   trackById(_, todo: ITodo): string {
     return todo.id;

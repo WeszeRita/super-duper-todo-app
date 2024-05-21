@@ -9,13 +9,17 @@ import { ITodo } from '../../../../../shared';
 })
 export class TodoCardComponent {
   @Input()
-    todo: ITodo;
+  todo: ITodo;
 
-  pin(id: string) {
+  pin(id: string): void {
     console.log(id);
   }
 
-  delete(id: string) {
+  delete(id: string): void {
     console.log(id);
+  }
+
+  buildTranslationKey(relativeKey: string): string {
+    return `todo-cards.${ relativeKey }`;
   }
 }

@@ -1,16 +1,16 @@
 <div class="todo-card">
-  <span class="tag">Status:</span>
-  <span class="info todo-status {{ todo.status }}">{{ todo.status | formatString }}</span>
+  <span class="label">{{ buildTranslationKey('status') | translate }}:</span>
+  <span class="info todo-status {{ todo.status }}">{{ buildTranslationKey(todo.status) | translate }}</span>
 
-  <span class="tag">Created at:</span>
+  <span class="label">{{ buildTranslationKey('createdAt') | translate }}:</span>
   <span class="date info"><img src="assets/icons/calendar.svg" alt="calendar icon">{{ todo.createdAt | date }}</span>
 
-  <span class="tag">Title:</span>
+  <span class="label">{{ buildTranslationKey('title') | translate }}:</span>
   <span class="info">{{ todo.title }}</span>
 
-  <span class="tag">Description:</span>
+  <span class="label">{{ buildTranslationKey('description') | translate }}:</span>
   <span class="info">{{ todo.description }}</span>
 
-  <button class="btn btn-pin" (click)="pin(todo.id)"><img src="assets/icons/pin.svg" alt="pin it icon"></button>
-  <button class="btn btn-delete" (click)="delete(todo.id)"><img src="assets/icons/delete.svg" alt="delete icon"></button>
+  <button class="btn btn-pin" (click)="pin(todo.id)"><img src="assets/icons/pin.svg" alt="{{ buildTranslationKey('altForPinIcon') | translate }}"></button>
+  <button class="btn btn-delete" (click)="delete(todo.id)"><img src="assets/icons/delete.svg" alt="{{ buildTranslationKey('altForDeleteIcon') | translate }}"></button>
 </div>

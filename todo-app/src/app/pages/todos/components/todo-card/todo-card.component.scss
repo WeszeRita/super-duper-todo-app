@@ -2,20 +2,16 @@
   @apply border-2 w-1/3 p-3;
 }
 
-.tag {
-  @apply text-slate-400;
+.label {
+  @apply block text-slate-400;
 }
 
 .info {
-  @apply text-slate-500 mb-3;
+  @apply block text-slate-500 mb-3;
 }
 
 .date {
  @apply flex gap-x-1.5;
-}
-
-span {
- @apply block;
 }
 
 .btn {
