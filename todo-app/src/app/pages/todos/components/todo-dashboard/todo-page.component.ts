@@ -15,7 +15,7 @@ export class TodoPageComponent {
       description: 'Bla-bla-bla...',
       status: Status.inProgress,
       isPinned: false,
-      createdAt: 628021800000,
+      createdAt: 678021800000,
       updatedAt: null,
     },
     {
@@ -24,7 +24,7 @@ export class TodoPageComponent {
       description: 'Bla-bla-bla...',
       status: Status.toDo,
       isPinned: false,
-      createdAt: 628021800000,
+      createdAt: 1928021800000,
       updatedAt: null,
     },
     {
@@ -33,7 +33,7 @@ export class TodoPageComponent {
       description: 'Bla-bla-bla...',
       status: Status.done,
       isPinned: false,
-      createdAt: 628021800000,
+      createdAt: 1628021800000,
       updatedAt: null,
     }
   ]

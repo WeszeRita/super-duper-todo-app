@@ -1,4 +1,4 @@
-<span class="todo-title">Todos (100 000)</span>
+<span class="todo-title">Todos ({{ todos.length }})</span>
 
 <div class="todo-card-container" >
   <app-todo-card *ngFor="let todo of todos; trackBy: trackById" [todo]="todo"></app-todo-card>

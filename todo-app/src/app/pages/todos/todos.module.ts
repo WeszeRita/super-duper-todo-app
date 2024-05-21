@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TodoPageComponent } from './components/todo-dashboard/todo-page.component';
-import { TodoCardComponent } from './components/todo-card/todo-card.component';
-
-
+import { TodoPageComponent } from './components';
+import { TodoCardComponent } from './components';
+import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    SharedModule,
+  ],
   declarations: [
     TodoPageComponent,
     TodoCardComponent,
@@ -13,8 +16,5 @@ import { TodoCardComponent } from './components/todo-card/todo-card.component';
   exports: [
     TodoPageComponent,
   ],
-  imports: [
-    CommonModule,
-  ],
 })
-export class TodosModule { }
+export class TodosModule {}
