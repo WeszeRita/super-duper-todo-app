@@ -19,4 +19,4 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
