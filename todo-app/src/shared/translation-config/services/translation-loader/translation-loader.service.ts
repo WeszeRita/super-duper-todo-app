@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
+import { Language } from 'src/shared/enums';
 
 @Injectable()
 export class TranslationLoaderService {
@@ -9,8 +10,8 @@ export class TranslationLoaderService {
     private http: HttpClient,
     private translate: TranslateService,
   ) {
-    this.translate.setDefaultLang('en-UK');
-    this.translate.use('en-UK');
+    this.translate.setDefaultLang(Language.english_UK);
+    this.translate.use(Language.english_UK);
   }
 
   loadTranslation(): Observable<any> {
