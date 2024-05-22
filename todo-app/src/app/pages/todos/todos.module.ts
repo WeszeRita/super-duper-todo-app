@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TodoPageComponent } from './components';
-import { TodoCardComponent } from './components';
+import { TodoPageComponent, TodoCardComponent } from './components';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @NgModule({
