@@ -1,4 +1,4 @@
-.header {
+:host {
   @apply m-6 flex justify-between;
 }
 
@@ -7,5 +7,5 @@
 }
 
 .btn {
-  @apply bg-blue-600 rounded-l text-white px-1.5 py-1;
+  @apply bg-blue-600 rounded text-white px-1.5 py-1;
 }

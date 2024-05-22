@@ -1,4 +1,3 @@
-<div class="todo-card">
   <span class="label">{{ buildTranslationKey('status') | translate }}:</span>
   <span class="info todo-status {{ todo.status }}">{{ buildTranslationKey(todo.status) | translate }}</span>
 
@@ -13,4 +12,3 @@
 
   <button class="btn btn-pin" (click)="pin(todo.id)"><img src="assets/icons/pin.svg" [alt]="buildTranslationKey('altForPinIcon') | translate"></button>
   <button class="btn btn-delete" (click)="delete(todo.id)"><img src="assets/icons/delete.svg" [alt]="buildTranslationKey('altForDeleteIcon') | translate"></button>
-</div>

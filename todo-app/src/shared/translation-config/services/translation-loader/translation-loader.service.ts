@@ -10,8 +10,8 @@ export class TranslationLoaderService {
     private http: HttpClient,
     private translate: TranslateService,
   ) {
-    this.translate.setDefaultLang(Language.english_UK);
-    this.translate.use(Language.english_UK);
+    this.translate.setDefaultLang(Language.englishUK);
+    this.translate.use(Language.englishUK);
   }
 
   loadTranslation(): Observable<any> {
