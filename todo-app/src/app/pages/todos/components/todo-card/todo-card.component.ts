@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ITodo } from 'src/shared';
+import { ITodo } from '@shared';
 
 @Component({
   selector: 'app-todo-card',

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components';
+import { HeaderComponent } from '@shared'
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({

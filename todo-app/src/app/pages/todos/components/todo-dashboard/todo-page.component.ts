@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ITodo, Status } from 'src/shared';
+import { ITodo, Status } from '@shared';
 
 @Component({
   selector: 'app-todo-page',
