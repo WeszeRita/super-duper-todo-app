@@ -1,0 +1,83 @@
+{
+  "todos": [
+    {
+      "id": "0fd081f1-8553-4d2e-9803-0924685dd932",
+      "title": "Learn Jasmine and Karma for writing unit tests in Angular.",
+      "description": "Write unit tests for services and components used in the to-do app.",
+      "status": "todo",
+      "tags": [
+        "Education"
+      ],
+      "isPinned": true,
+      "createdAt": 1699724756921,
+      "updatedAt": 1703421762383
+    },
+    {
+      "id": "92456955-d6b0-4fb6-a04d-ceae9c6dbac9",
+      "title": "Morning Exercise.",
+      "description": "Complete a 30-minute workout session in the morning.",
+      "status": "inProgress",
+      "tags": [
+        "Health",
+        "Fitness"
+      ],
+      "isPinned": true,
+      "createdAt": 1702157413274,
+      "updatedAt": 1715943137545
+    },
+    {
+      "id": "290df5b1-86c7-4dd6-8b3f-951b5bc44827",
+      "title": "Grocery Shopping.",
+      "description": "Buy fruits, vegetables, and other essentials for the week.",
+      "status": "inProgress",
+      "tags": [
+        "Shopping",
+        "Home"
+      ],
+      "isPinned": false,
+      "createdAt": 1703420576893,
+      "updatedAt": 1703421680448
+    },
+    {
+      "id": "465a2547-5d56-47d3-8f3b-d4fe950fe60d",
+      "title": "Family Movie Night.",
+      "description": "Choose a family-friendly movie and plan a movie night at home.",
+      "status": "done",
+      "tags": [
+        "Family",
+        "Entertainment",
+        "Home"
+      ],
+      "isPinned": false,
+      "createdAt": 1703421553758,
+      "updatedAt": 1703421668778
+    },
+    {
+      "id": "6038db5f-6591-4aa8-9fc2-a2ae0bb29563",
+      "title": "Gardening.",
+      "description": "Plant new flowers and herbs in the backyard garden.",
+      "status": "inProgress",
+      "tags": [
+        "Home",
+        "Gardening",
+        "dsfgfbg"
+      ],
+      "isPinned": true,
+      "createdAt": 1703421614253,
+      "updatedAt": 1715943210951
+    },
+    {
+      "id": "9dcdb4d1-f651-4c9d-8858-54447e009afd",
+      "title": "gh",
+      "description": "gh",
+      "status": "todo",
+      "tags": [],
+      "isPinned": false,
+      "createdAt": 1715943246965,
+      "updatedAt": null
+    }
+  ],
+  "user": {
+    "premium": true
+  }
+}
