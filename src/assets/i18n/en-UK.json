@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "To do",
-    "addButtonText": "+ Add to-do"
+    "addButtonText": "+ new to-do"
   },
   "todo-page": {
     "title": "Todos"
@@ -16,5 +16,12 @@
     "description": "Description:",
     "altForPinIcon": "pin it icon",
     "altForDeleteIcon": "delete icon"
+  },
+  "addTodoForm": {
+    "altForCloseButton": "close button",
+    "titlePlaceholder": "Title",
+    "descriptionPlaceholder": "Description",
+    "requiredErrorMassage": "This field is required",
+    "addButtonTitle": "Add to-do"
   }
 }

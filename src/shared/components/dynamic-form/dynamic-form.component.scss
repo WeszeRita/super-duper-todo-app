@@ -1,0 +1,32 @@
+.form {
+  @apply bg-white p-6 rounded;
+  @apply flex flex-col gap-y-2;
+}
+
+.input {
+   @apply border;
+}
+
+.btn-ok {
+  @apply border rounded p-1 bg-blue-600 text-white;
+}
+
+.btn-close {
+  @apply self-end;
+}
+
+button[disabled] {
+  background-color: lightgrey;
+  color: gray;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.error {
+  border: 1px solid crimson;
+}
+
+.error-message {
+  color: crimson;
+  font-size: small;
+}

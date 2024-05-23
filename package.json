@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "start": "npm-run-all --parallel client server",
-    "client": "ng serve --open",
+    "client": "ng serve",
     "server": "nodemon server/server.js"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
+    "@angular/cdk": "^16.2.14",
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
     "@angular/core": "^16.2.0",

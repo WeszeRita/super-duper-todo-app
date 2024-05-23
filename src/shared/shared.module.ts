@@ -2,10 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '@shared'
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { DialogModule } from '@angular/cdk/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    DynamicFormComponent,
   ],
   exports: [
     HeaderComponent,
@@ -13,6 +18,9 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     CommonModule,
     TranslateModule,
+    OverlayModule,
+    DialogModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule { }

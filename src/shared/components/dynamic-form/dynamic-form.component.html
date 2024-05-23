@@ -1,0 +1,35 @@
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+  <button class="btn btn-close" type="button" (click)="close()">
+    <img src="assets/icons/x.svg" [alt]="buildTranslationKey('altForCloseButton') | translate">
+  </button>
+
+  <input
+    class="input"
+    [class.error]="titleControl.invalid && titleControl.touched"
+    formControlName="title"
+    [placeholder]="buildTranslationKey('titlePlaceholder') | translate"
+    type="text">
+
+  <span
+    *ngIf="titleControl.invalid && titleControl.touched"
+    class="error-message">
+    {{ buildTranslationKey('requiredErrorMassage') | translate }}
+    </span>
+
+  <input
+    class="input"
+    [class.error]="descriptionControl.invalid && descriptionControl.touched"
+    formControlName="description"
+    [placeholder]="buildTranslationKey('descriptionPlaceholder') | translate"
+    type="text">
+
+  <span
+    *ngIf="descriptionControl.invalid && descriptionControl.touched"
+    class="error-message">
+    {{ buildTranslationKey('requiredErrorMassage') | translate }}
+    </span>
+
+  <button class="btn btn-ok" [disabled]="form.invalid">
+    {{ buildTranslationKey('addButtonTitle') | translate }}
+  </button>
+</form>
