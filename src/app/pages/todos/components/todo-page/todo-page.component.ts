@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ITodo, TodoFacadeService } from '@shared';
-import { Observable } from 'rxjs';
+import { distinctUntilChanged, Observable, take } from 'rxjs';
 
 @Component({
   selector: 'app-todo-page',
@@ -8,14 +8,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./todo-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TodoPageComponent implements OnInit{
+export class TodoPageComponent implements OnInit {
   todos$: Observable<ITodo[]>;
 
-  constructor(private todoFacadeService: TodoFacadeService){}
+  constructor(private todoFacadeService: TodoFacadeService) {
+  }
 
   ngOnInit(): void {
     this.todoFacadeService.loadTodoList();
-    this.todos$ = this.todoFacadeService.getTodoList();  //todo: firstValueFrom
+    this.todos$ = this.todoFacadeService.getTodoList()
+      .pipe(
+        distinctUntilChanged(),
+        take(2),
+      );
   }
 
   buildTranslationKey(relativeKey: string): string {
