@@ -19,6 +19,13 @@ export class TodoCardComponent {
     console.log(id);
   }
 
+  getClass(status: string): string {
+    if (status === 'inProgress') {
+      return 'in-progress';
+    }
+    return status;
+  }
+
   buildTranslationKey(relativeKey: string): string {
     return `todo-cards.${ relativeKey }`;
   }

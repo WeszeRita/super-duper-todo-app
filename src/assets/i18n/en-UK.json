@@ -7,13 +7,13 @@
     "title": "Todos"
   },
   "todo-cards": {
-    "to-do": "To do",
-    "in-progress": "In progress",
+    "todo": "To do",
+    "inProgress": "In progress",
     "done": "Done",
-    "status": "Status",
-    "createdAt": "Created at",
-    "title": "Title",
-    "description": "Description",
+    "status": "Status:",
+    "createdAt": "Created at:",
+    "title": "Title:",
+    "description": "Description:",
     "altForPinIcon": "pin it icon",
     "altForDeleteIcon": "delete icon"
   }
