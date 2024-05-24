@@ -35,5 +35,20 @@ export class TodoEffects {
       );
   });
 
+  removeTodo$ = createEffect((): Observable<Action> => {
+    return this.actions$
+      .pipe(
+        ofType(TodoActions.removeTodo),
+        switchMap((action) => {
+          const id = action.id;
+          return this.todoService.removeTodo(id)
+            .pipe(
+              map(() => TodoActions.todoRemoved({ id })),
+              catchError((error) => of(TodoActions.errorRemoveTodo({ error }))),
+            );
+        }),
+      );
+  });
+
   constructor(private actions$: Actions, private todoService: TodoService) {}
 }

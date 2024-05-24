@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ITodo, Status } from '@shared';
+import { ITodo, Status, TodoFacadeService } from '@shared';
 
 @Component({
   selector: 'app-todo-card',
@@ -11,13 +11,14 @@ export class TodoCardComponent {
   @Input()
   todo: ITodo;
 
+  constructor(private todoFacadeService: TodoFacadeService) {}
+
   pin(id: ITodo['id']): void {
     console.log(id);
   }
 
   delete(id: ITodo['id']): void {
-    console.log(id);
-
+    this.todoFacadeService.removeTodo(id);
   }
 
   buildTranslationKey(relativeKey: string): string {
