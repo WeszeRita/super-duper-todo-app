@@ -20,4 +20,8 @@ export class TodoFacadeService {
   createNewTodo(todo: ITodo): void {
     return this.store.dispatch(TodoActions.createTodo({ todo }));
   }
+
+  removeTodo(id: ITodo['id']): void {
+    this.store.dispatch(TodoActions.removeTodo({ id }));
+  }
 }

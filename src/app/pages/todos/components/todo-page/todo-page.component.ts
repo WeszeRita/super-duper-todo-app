@@ -22,7 +22,7 @@ export class TodoPageComponent implements OnInit {
     return `todo-page.${ relativeKey }`;
   }
 
-  trackById(_, todo: ITodo): string {
+  trackById(_, todo: ITodo): ITodo['id'] {
     return todo.id;
   }
 }

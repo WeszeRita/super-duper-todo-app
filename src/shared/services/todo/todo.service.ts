@@ -13,7 +13,7 @@ export class TodoService {
     return this.http.get<ITodo[]>(this.url);
   }
 
-  getTodo(id: string): Observable<ITodo> {
+  getTodo(id: ITodo['id']): Observable<ITodo> {
     return this.http.get<ITodo>(`${this.url}/${id}`);
   }
 
@@ -25,7 +25,7 @@ export class TodoService {
     return this.http.patch<ITodo>(`${ this.url }/${ todo.id }`, { ...todo });
   }
 
-  removeTodo(id: string): Observable<ITodo> {
+  removeTodo(id: ITodo['id']): Observable<ITodo> {
     return this.http.delete<ITodo>(`${ this.url }/${ id }`);
   }
 }

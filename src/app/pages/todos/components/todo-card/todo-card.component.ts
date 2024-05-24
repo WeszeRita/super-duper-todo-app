@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ITodo } from '@shared';
+import { ITodo, Status } from '@shared';
 
 @Component({
   selector: 'app-todo-card',
@@ -11,22 +11,18 @@ export class TodoCardComponent {
   @Input()
   todo: ITodo;
 
-  pin(id: string): void {
+  pin(id: ITodo['id']): void {
     console.log(id);
   }
 
-  delete(id: string): void {
+  delete(id: ITodo['id']): void {
     console.log(id);
-  }
 
-  getClass(status: string): string {
-    if (status === 'inProgress') {
-      return 'in-progress';
-    }
-    return status;
   }
 
   buildTranslationKey(relativeKey: string): string {
     return `todo-cards.${ relativeKey }`;
   }
+
+  protected readonly Status = Status;
 }

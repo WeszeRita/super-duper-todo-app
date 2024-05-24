@@ -32,7 +32,7 @@ export namespace TodoActions {
   export const todoEdited = createAction(TodoAction.todoEdited, props<{ todo: ITodo }>());
   export const errorEditTodo = createAction(TodoAction.errorEditTodo, props<{ error: Error }>());
 
-  export const removeTodo = createAction(TodoAction.removeTodo, props<{ id: string }>());
-  export const todoRemoved = createAction(TodoAction.todoRemoved, props<{ id: string }>());
+  export const removeTodo = createAction(TodoAction.removeTodo, props<{ id: ITodo['id'] }>());
+  export const todoRemoved = createAction(TodoAction.todoRemoved, props<{ id: ITodo['id'] }>());
   export const errorRemoveTodo = createAction(TodoAction.errorRemoveTodo, props<{ error: Error }>());
 }

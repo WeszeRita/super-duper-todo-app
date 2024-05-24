@@ -40,7 +40,7 @@ export class DynamicFormComponent implements OnInit{
     const newTodo: ITodo = {
       title: this.form.value.title,
       description: this.form.value.description,
-      status: Status.toDo,
+      status: Status.todo,
       isPinned: false,
       createdAt: new Date().getTime(),
       updatedAt: null,
