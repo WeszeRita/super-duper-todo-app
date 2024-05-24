@@ -10,8 +10,10 @@
 <span class="label">{{ buildTranslationKey('description') | translate }}</span>
 <span class="info">{{ todo.description }}</span>
 
-<button (click)="pin(todo.id)" class="btn btn-pin">
-  <img [alt]="buildTranslationKey('altForPinIcon') | translate" src="assets/icons/pin.svg">
+<button (click)="togglePin(todo)" class="btn btn-pin">
+  <img
+    [alt]="buildTranslationKey('altForPinIcon') | translate"
+    [src]="todo.isPinned ? 'assets/icons/pin-filled.svg' : 'assets/icons/pin-unfilled.svg'">
 </button>
 
 <button (click)="delete(todo.id)" class="btn btn-delete">
