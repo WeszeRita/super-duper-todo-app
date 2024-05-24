@@ -12,7 +12,7 @@ export class HeaderComponent {
   constructor(public dialog: Dialog) {}
 
   openDialog() {
-    this.dialog.open(DynamicFormComponent);
+    this.dialog.open(DynamicFormComponent);  // todo: editTodo -> itt adjuk oda neki a editálandó todo titleöjét és desc-jét, Input() + ngOnChanes a dynamic comp-ben
   }
 
   buildTranslationKey(relativeKey: string): string {

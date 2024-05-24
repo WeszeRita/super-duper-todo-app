@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TodoActions, TodoSelectors } from '../../store';
-import { filter, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ITodo } from '../../interfaces';
 
 @Injectable()
@@ -14,7 +14,10 @@ export class TodoFacadeService {
   }
 
   getTodoList(): Observable<ITodo[]> {
-    return this.store.select(TodoSelectors.selectTodos)
-      .pipe(filter(Boolean));
+    return this.store.select(TodoSelectors.selectTodos);
+  }
+
+  createNewTodo(todo: ITodo): void {
+    return this.store.dispatch(TodoActions.createTodo({ todo }));
   }
 }

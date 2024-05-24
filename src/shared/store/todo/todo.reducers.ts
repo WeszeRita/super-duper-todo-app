@@ -18,8 +18,12 @@ export const todoReducer = createReducer(
   on(TodoActions.todoListLoaded, (state, { todos }) => {
     return todoAdapter.addMany(todos, state);
   }),
+  on(TodoActions.todoCreated, (state, { todo }) => {
+    return todoAdapter.addOne(todo, state);
+  }),
   on(
     TodoActions.errorLoadTodoList,
+    TodoActions.errorCreateTodo,
     (state, action) => ({
       ...state,
       error: action.error,

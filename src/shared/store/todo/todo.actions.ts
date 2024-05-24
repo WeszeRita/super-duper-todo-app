@@ -26,7 +26,7 @@ export namespace TodoActions {
 
   export const createTodo = createAction(TodoAction.createTodo, props<{ todo: ITodo }>());
   export const todoCreated = createAction(TodoAction.todoCreated, props<{ todo: ITodo }>());
-  export const errorTodo = createAction(TodoAction.errorCreateTodo, props<{ error: Error }>());
+  export const errorCreateTodo = createAction(TodoAction.errorCreateTodo, props<{ error: Error }>());
 
   export const editTodo = createAction(TodoAction.editTodo, props<{ todo: ITodo }>());
   export const todoEdited = createAction(TodoAction.todoEdited, props<{ todo: ITodo }>());

@@ -1,7 +1,7 @@
 import { Status } from '../enums';
 
 export interface ITodo {
-  id: string;
+  id?: string;
   title: string;
   description: string;
   status: Status;
