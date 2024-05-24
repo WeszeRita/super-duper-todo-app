@@ -8,13 +8,19 @@ import { ITodo, Status, TodoFacadeService } from '@shared';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoCardComponent {
+  protected readonly Status = Status;
+
   @Input()
   todo: ITodo;
 
   constructor(private todoFacadeService: TodoFacadeService) {}
 
-  pin(id: ITodo['id']): void {
-    console.log(id);
+  togglePin(todo: ITodo): void {
+    const editedTodo: ITodo = {
+      ...todo,
+      isPinned: !todo.isPinned,
+    }
+    this.todoFacadeService.editTodo(editedTodo);
   }
 
   delete(id: ITodo['id']): void {
@@ -24,6 +30,4 @@ export class TodoCardComponent {
   buildTranslationKey(relativeKey: string): string {
     return `todo-cards.${ relativeKey }`;
   }
-
-  protected readonly Status = Status;
 }

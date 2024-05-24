@@ -1,8 +1,7 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState, Update } from '@ngrx/entity';
 import { ITodo } from '@shared';
 import { TodoActions } from './todo.actions';
 import { createReducer, on } from '@ngrx/store';
-import { state } from '@angular/animations';
 
 export interface ITodoState extends EntityState<ITodo> {
   error: Error;
@@ -22,12 +21,20 @@ export const todoReducer = createReducer(
   on(TodoActions.todoCreated, (state, { todo }) => {
     return todoAdapter.addOne(todo, state);
   }),
+  on(TodoActions.todoEdited, (state, { todo }) => {
+    const update: Update<ITodo> = {
+      id: todo.id,
+      changes: { ...todo }
+    };
+    return todoAdapter.updateOne(update, state);
+  }),
   on(TodoActions.todoRemoved, (state, { id }) => {
     return todoAdapter.removeOne(id, state);
   }),
   on(
     TodoActions.errorLoadTodoList,
     TodoActions.errorCreateTodo,
+    TodoActions.errorEditTodo,
     TodoActions.errorRemoveTodo,
     (state, action) => ({
       ...state,

@@ -35,6 +35,20 @@ export class TodoEffects {
       );
   });
 
+  editTodo$ = createEffect((): Observable<Action> => {
+    return this.actions$
+      .pipe(
+        ofType(TodoActions.editTodo),
+        switchMap(({ todo }) => {
+          return this.todoService.editTodo(todo)
+            .pipe(
+              map((todo: ITodo) => TodoActions.todoEdited({ todo })),
+              catchError((error) => of(TodoActions.errorEditTodo({ error }))),
+            );
+        }),
+      );
+  });
+
   removeTodo$ = createEffect((): Observable<Action> => {
     return this.actions$
       .pipe(
@@ -50,5 +64,6 @@ export class TodoEffects {
       );
   });
 
-  constructor(private actions$: Actions, private todoService: TodoService) {}
+  constructor(private actions$: Actions, private todoService: TodoService) {
+  }
 }
