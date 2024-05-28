@@ -5,7 +5,7 @@ import { ITodo } from '../../interfaces';
 import { Status } from '../../enums';
 import { TodoFacadeService } from '../../services';
 
-interface IAddTodoForm {
+interface ITodoForm {
   title: FormControl<string>;
   description: FormControl<string>;
 }
@@ -17,7 +17,7 @@ interface IAddTodoForm {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicFormComponent implements OnInit{
-  form: FormGroup<IAddTodoForm>;
+  form: FormGroup<ITodoForm>
 
   constructor(public dialogRef: DialogRef<string>, private fb: FormBuilder, private todoFacadeService: TodoFacadeService) {}
 

@@ -13,10 +13,6 @@ export class TodoService {
     return this.http.get<ITodo[]>(this.url);
   }
 
-  getTodo(id: ITodo['id']): Observable<ITodo> {
-    return this.http.get<ITodo>(`${this.url}/${id}`);
-  }
-
   createTodo(todo: ITodo): Observable<ITodo> {
     return this.http.post<ITodo>(this.url, { ...todo });
   }

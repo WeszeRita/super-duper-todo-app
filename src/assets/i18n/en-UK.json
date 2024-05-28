@@ -6,7 +6,7 @@
   "todo-page": {
     "title": "Todos"
   },
-  "todo-cards": {
+  "todo-card": {
     "todo": "To do",
     "inProgress": "In progress",
     "done": "Done",
@@ -14,8 +14,10 @@
     "createdAt": "Created at:",
     "title": "Title:",
     "description": "Description:",
-    "altForPinIcon": "pin it icon",
-    "altForDeleteIcon": "delete icon"
+    "altForIcon": "icon",
+    "titlePlaceholder": "Title",
+    "descriptionPlaceholder": "Description",
+    "requiredErrorMassage": "This field is required"
   },
   "addTodoForm": {
     "altForCloseButton": "close button",

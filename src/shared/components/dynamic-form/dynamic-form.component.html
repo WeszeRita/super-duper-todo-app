@@ -1,13 +1,13 @@
 <form class="form" [formGroup]="form" (ngSubmit)="submit()">
   <button class="btn btn-close" type="button" (click)="cancel()">
-    <img src="assets/icons/x.svg" [alt]="buildTranslationKey('altForCloseButton') | translate">
+    <img src="./assets/icons/x.svg" [alt]="buildTranslationKey('altForCloseButton') | translate">
   </button>
 
   <input
     class="input"
     [class.error]="titleControl.invalid && titleControl.touched"
-    formControlName="title"
     [placeholder]="buildTranslationKey('titlePlaceholder') | translate"
+    formControlName="title"
     type="text">
 
   <span
@@ -19,8 +19,8 @@
   <input
     class="input"
     [class.error]="descriptionControl.invalid && descriptionControl.touched"
-    formControlName="description"
     [placeholder]="buildTranslationKey('descriptionPlaceholder') | translate"
+    formControlName="description"
     type="text">
 
   <span
