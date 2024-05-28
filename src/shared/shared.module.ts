@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '@shared'
 import { TranslateModule } from '@ngx-translate/core';
-import { DynamicFormComponent } from './components';
+import { TodoFormComponent } from './components';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DialogModule } from '@angular/cdk/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     HeaderComponent,
-    DynamicFormComponent,
+    TodoFormComponent,
   ],
   exports: [
     HeaderComponent,

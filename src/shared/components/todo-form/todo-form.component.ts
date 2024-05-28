@@ -4,20 +4,16 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ITodo } from '../../interfaces';
 import { Status } from '../../enums';
 import { TodoFacadeService } from '../../services';
-
-interface ITodoForm {
-  title: FormControl<string>;
-  description: FormControl<string>;
-}
+import { IAddTodoForm } from '../../interfaces';
 
 @Component({
-  selector: 'app-dynamic-form',
-  templateUrl: './dynamic-form.component.html',
-  styleUrls: ['./dynamic-form.component.scss'],
+  selector: 'app-todo-form',
+  templateUrl: './todo-form.component.html',
+  styleUrls: ['./todo-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DynamicFormComponent implements OnInit{
-  form: FormGroup<ITodoForm>
+export class TodoFormComponent implements OnInit{
+  form: FormGroup<IAddTodoForm>
 
   constructor(public dialogRef: DialogRef<string>, private fb: FormBuilder, private todoFacadeService: TodoFacadeService) {}
 
@@ -36,8 +32,8 @@ export class DynamicFormComponent implements OnInit{
     })
   }
 
-  submit() {
-    const newTodo: ITodo = {
+  submit(): void {
+    const newTodo: Omit<ITodo, 'id'> = {
       title: this.form.value.title,
       description: this.form.value.description,
       status: Status.todo,
@@ -50,11 +46,11 @@ export class DynamicFormComponent implements OnInit{
     this.closeModal();
   }
 
-  cancel() {
+  cancel(): void {
    this.closeModal();
   }
 
-  closeModal () {
+  closeModal(): void {
     this.form.reset();
     this.dialogRef.close();
   }

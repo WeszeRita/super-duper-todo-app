@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
-import { DynamicFormComponent } from '../dynamic-form/dynamic-form.component';
+import { TodoFormComponent } from '../todo-form/todo-form.component';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +11,8 @@ import { DynamicFormComponent } from '../dynamic-form/dynamic-form.component';
 export class HeaderComponent {
   constructor(public dialog: Dialog) {}
 
-  openDialog() {
-    this.dialog.open(DynamicFormComponent);
+  openDialog(): void {
+    this.dialog.open(TodoFormComponent);
   }
 
   buildTranslationKey(relativeKey: string): string {

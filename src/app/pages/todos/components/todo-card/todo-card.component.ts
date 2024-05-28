@@ -1,14 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { ITodo, Status, TodoFacadeService } from '@shared';
+import { InputType, ITodo, Status, TodoFacadeService } from '@shared';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
-interface ITodoForm {
-  title: FormControl<string>;
-  description: FormControl<string>;
-  isPinned: FormControl<boolean>;
-}
-
-type inputType = 'title' | 'description' | 'inPinned';
+import { IEditTodoForm } from '@shared';
 
 @Component({
   selector: 'app-todo-card',
@@ -17,7 +10,7 @@ type inputType = 'title' | 'description' | 'inPinned';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoCardComponent implements OnInit {
-  form: FormGroup<ITodoForm>;
+  form: FormGroup<IEditTodoForm>;
   displayTitle = true;
   displayDescription = true;
 
@@ -34,6 +27,10 @@ export class TodoCardComponent implements OnInit {
     return this.form.controls.description;
   }
 
+  get statusClass(): Status {
+    return Status[this.todo.status];
+  }
+
   ngOnInit(): void {
     this.form = this.fb.group({
       title: [this.todo.title, Validators.required],
@@ -42,7 +39,7 @@ export class TodoCardComponent implements OnInit {
     });
   }
 
-  editTodo(inputName: inputType, todo: ITodo): void {
+  editTodo(inputName: InputType, todo: ITodo): void {
     let editedTodo: ITodo;
     const now = new Date().getTime();
 
@@ -65,7 +62,7 @@ export class TodoCardComponent implements OnInit {
     }
   }
 
-  cancel(inputName: Exclude<inputType, 'inPinned'>, todo: ITodo): void {
+  cancel(inputName: Exclude<InputType, 'inPinned'>, todo: ITodo): void {
     this.form.controls[inputName].setValue(todo[inputName]);
     this.form.controls[inputName].markAsPristine();
     this.toggleDisplay(inputName);
@@ -75,7 +72,7 @@ export class TodoCardComponent implements OnInit {
     this.todoFacadeService.removeTodo(id);
   }
 
-  toggleDisplay(inputName: Exclude<inputType, 'inPinned'>): void {
+  toggleDisplay(inputName: Exclude<InputType, 'inPinned'>): void {
     if (inputName === 'title') {
       this.displayTitle = !this.displayTitle;
     }
@@ -83,14 +80,6 @@ export class TodoCardComponent implements OnInit {
     if (inputName === 'description') {
       this.displayDescription = !this.displayDescription;
     }
-  }
-
-  getClass(status: string): Status {
-    if (status === 'inProgress') {
-      return Status.inProgress;
-    }
-
-    return Status[status];
   }
 
   buildTranslationKey(relativeKey: string): string {

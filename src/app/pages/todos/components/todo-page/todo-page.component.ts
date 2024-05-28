@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ITodo, TodoFacadeService } from '@shared';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 
 @Component({
   selector: 'app-todo-page',
@@ -9,13 +9,23 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoPageComponent implements OnInit {
-  todos$: Observable<ITodo[]>;
+  todoList$: Observable<ITodo[]>;
+  todoList: ITodo[];
+  length: number;
 
-  constructor(private todoFacadeService: TodoFacadeService) {}
+  constructor(private todoFacadeService: TodoFacadeService) {
+  }
 
   ngOnInit(): void {
     this.todoFacadeService.loadTodoList();
-    this.todos$ = this.todoFacadeService.getTodoList();
+    this.todoList$ = this.getAttTodos();
+  }
+
+  getAttTodos() {
+    return this.todoFacadeService.getTodoList()
+      .pipe(
+        shareReplay({ bufferSize: 1, refCount: true }),
+      );
   }
 
   buildTranslationKey(relativeKey: string): string {

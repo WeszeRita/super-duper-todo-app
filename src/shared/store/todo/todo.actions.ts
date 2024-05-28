@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { ITodo } from '@shared';
 
-export const enum TodoAction {
+const enum TodoAction {
   loadTodoList = '[Todo] Load todo list',
   todoListLoaded = '[Todo] Todo list loaded',
   errorLoadTodoList = '[Todo] Load todo list error',
@@ -24,7 +24,7 @@ export namespace TodoActions {
   export const todoListLoaded = createAction(TodoAction.todoListLoaded, props<{ todos: ITodo[] }>());
   export const errorLoadTodoList = createAction(TodoAction.errorLoadTodoList, props<{ error: Error }>());
 
-  export const createTodo = createAction(TodoAction.createTodo, props<{ todo: ITodo }>());
+  export const createTodo = createAction(TodoAction.createTodo, props<{ todo: Omit<ITodo, 'id'> }>());
   export const todoCreated = createAction(TodoAction.todoCreated, props<{ todo: ITodo }>());
   export const errorCreateTodo = createAction(TodoAction.errorCreateTodo, props<{ error: Error }>());
 

@@ -64,6 +64,5 @@ export class TodoEffects {
       );
   });
 
-  constructor(private actions$: Actions, private todoService: TodoService) {
-  }
+  constructor(private actions$: Actions, private todoService: TodoService) {}
 }
