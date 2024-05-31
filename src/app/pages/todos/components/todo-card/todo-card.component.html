@@ -1,92 +1,36 @@
 <form [formGroup]="form" class="form">
   <span class="label">{{ buildTranslationKey('status') | translate }}</span>
-  <span class="info todo-status {{ statusClass }}">{{ buildTranslationKey(todo.status) | translate }}</span>
+  <span class="todo-status {{ statusClass }}">{{ buildTranslationKey(todo.status) | translate }}</span>
 
   <span class="label">{{ buildTranslationKey('createdAt') | translate }}</span>
-  <span class="date info">
+  <span class="date">
     <img
       src="./assets/icons/calendar.svg"
       [alt]="buildTranslationKey('altForIcon') | translate">
       {{ todo.createdAt | date }}
   </span>
 
-  <label class="label">{{ buildTranslationKey('title') | translate }}
-    <span
-      *ngIf="displayTitle; else titleInput"
-      class="info"
-      role="button"
-      (click)="toggleDisplay('title')">
-      {{ todo.title }}
-    </span>
+  <app-editable-field
+    formControlName="title"
+    [label]="'title'"
+    [placeholder]="'Title...'"
+    (confirm)="editTodo()">
+  </app-editable-field>
 
-    <ng-template #titleInput>
-      <div>
-        <input
-          class="input"
-          [class.error]="titleControl.invalid && titleControl.touched"
-          [placeholder]="buildTranslationKey('titlePlaceholder') | translate"
-          formControlName="title"
-          type="text">
-
-        <button (click)="cancel('title', todo)">
-          <img src="./assets/icons/close.svg" [alt]="buildTranslationKey('altForIcon') | translate">
-        </button>
-
-        <button [disabled]="titleControl.invalid || titleControl.pristine" (click)="editTodo('title', todo)">
-          <img src="./assets/icons/done.svg" [alt]="buildTranslationKey('altForIcon') | translate">
-        </button>
-      </div>
-    </ng-template>
-  </label>
-
-  <span
-    *ngIf="titleControl.invalid && titleControl.touched"
-    class="error-message">
-    {{ buildTranslationKey('requiredErrorMassage') | translate }}
-  </span>
-
-  <label class="label">{{ buildTranslationKey('description') | translate }}
-    <span
-      *ngIf="displayDescription; else descriptionInput"
-      class="info"
-      role="button"
-      (click)="toggleDisplay('description')">
-      {{ todo.description }}
-    </span>
-
-    <ng-template #descriptionInput>
-      <div>
-        <input
-          class="input"
-          [class.error]="descriptionControl.invalid && descriptionControl.touched"
-          [placeholder]="buildTranslationKey('descriptionPlaceholder') | translate"
-          formControlName="description"
-          type="text">
-
-        <button (click)="cancel('description', todo)">
-          <img src="./assets/icons/close.svg" [alt]="buildTranslationKey('altForIcon') | translate">
-        </button>
-
-        <button [disabled]="descriptionControl.invalid || descriptionControl.pristine" (click)="editTodo('description', todo)">
-          <img src="./assets/icons/done.svg" [alt]="buildTranslationKey('altForIcon') | translate">
-        </button>
-      </div>
-    </ng-template>
-  </label>
-
-  <span
-    *ngIf="descriptionControl.invalid && descriptionControl.touched"
-    class="error-message">
-    {{ buildTranslationKey('requiredErrorMassage') | translate }}
-  </span>
-
-  <button (click)="editTodo('inPinned', todo)" class="btn btn-pin">
-    <img
-      [src]="todo.isPinned ? './assets/icons/pin-filled.svg' : './assets/icons/pin-unfilled.svg'"
-      [alt]="buildTranslationKey('altForIcon') | translate">
-  </button>
+  <app-editable-field
+    formControlName="description"
+    [label]="'description'"
+    [placeholder]="'Description...'"
+    (confirm)="editTodo()">
+  </app-editable-field>
 
   <button class="btn btn-delete" (click)="delete(todo.id)">
     <img src="./assets/icons/delete.svg" [alt]="buildTranslationKey('altForIcon') | translate">
   </button>
 </form>
+
+<button (click)="togglePinned()" class="btn btn-pin">
+  <img
+    [src]="todo.isPinned ? './assets/icons/pin-filled.svg' : './assets/icons/pin-unfilled.svg'"
+    [alt]="buildTranslationKey('altForIcon') | translate">
+</button>

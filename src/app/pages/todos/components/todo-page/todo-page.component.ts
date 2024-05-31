@@ -10,7 +10,6 @@ import { Observable, shareReplay } from 'rxjs';
 })
 export class TodoPageComponent implements OnInit {
   todoList$: Observable<ITodo[]>;
-  length: number;
 
   constructor(private todoFacadeService: TodoFacadeService) {}
 
