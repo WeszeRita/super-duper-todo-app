@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ITodo } from '@shared';
+import { ITodo } from '../../interfaces';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -17,8 +17,16 @@ export class TodoService {
     return this.http.post<ITodo>(this.url, { ...todo });
   }
 
-  editTodo(todo: ITodo): Observable<ITodo> {
+  editTodo(todo: Partial<ITodo>): Observable<ITodo> {
     return this.http.patch<ITodo>(`${ this.url }/${ todo.id }`, { ...todo });
+  }
+
+  pinTodo(id: ITodo['id']): Observable<ITodo['id']> {
+    return this.http.patch<ITodo['id']>(`${ this.url }/${ id }/pin`, { id });
+  }
+
+  unpinTodo(id: ITodo['id']): Observable<ITodo['id']> {
+    return this.http.patch<ITodo['id']>(`${ this.url }/${ id }/unpin`, { id });
   }
 
   removeTodo(id: ITodo['id']): Observable<ITodo> {

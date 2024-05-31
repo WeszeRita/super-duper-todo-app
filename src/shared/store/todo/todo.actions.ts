@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ITodo } from '@shared';
+import { ITodo } from '../../interfaces';
 
 const enum TodoAction {
   loadTodoList = '[Todo] Load todo list',
@@ -13,6 +13,14 @@ const enum TodoAction {
   editTodo = '[Todo] Edit todo',
   todoEdited = '[Todo] Todo edited',
   errorEditTodo = '[Todo] Edit todo error',
+
+  pinTodo = '[Todo] Pin Todo',
+  todoPinned = '[Todo] Todo pinned',
+  errorPinTodo = '[Todo] Pin todo error',
+
+  unpinTodo = '[Todo] Unpin Todo',
+  todoUnpinned = '[Todo] Todo unpinned',
+  errorUnpinTodo = '[Todo] Unpin todo error',
 
   removeTodo = '[Todo] Remove todo',
   todoRemoved = '[Todo] Todo removed',
@@ -28,9 +36,17 @@ export namespace TodoActions {
   export const todoCreated = createAction(TodoAction.todoCreated, props<{ todo: ITodo }>());
   export const errorCreateTodo = createAction(TodoAction.errorCreateTodo, props<{ error: Error }>());
 
-  export const editTodo = createAction(TodoAction.editTodo, props<{ todo: ITodo }>());
+  export const editTodo = createAction(TodoAction.editTodo, props<{ todo: Partial<ITodo> }>());
   export const todoEdited = createAction(TodoAction.todoEdited, props<{ todo: ITodo }>());
   export const errorEditTodo = createAction(TodoAction.errorEditTodo, props<{ error: Error }>());
+
+  export const pinTodo = createAction(TodoAction.pinTodo, props<{ id: ITodo['id'] }>());
+  export const todoPinned = createAction(TodoAction.todoPinned, props<{ id: ITodo['id'] }>());
+  export const errorPinTodo = createAction(TodoAction.errorPinTodo, props<{ error: Error }>());
+
+  export const unpinTodo = createAction(TodoAction.unpinTodo, props<{ id: ITodo['id'] }>());
+  export const todoUnpinned = createAction(TodoAction.todoUnpinned, props<{ id: ITodo['id'] }>());
+  export const errorUnpinTodo = createAction(TodoAction.errorUnpinTodo, props<{ error: Error }>());
 
   export const removeTodo = createAction(TodoAction.removeTodo, props<{ id: ITodo['id'] }>());
   export const todoRemoved = createAction(TodoAction.todoRemoved, props<{ id: ITodo['id'] }>());

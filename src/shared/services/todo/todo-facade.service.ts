@@ -21,8 +21,16 @@ export class TodoFacadeService {
     return this.store.dispatch(TodoActions.createTodo({ todo }));
   }
 
-  editTodo(todo: ITodo): void {
+  editTodo(todo: Partial<ITodo>): void {
     this.store.dispatch(TodoActions.editTodo({ todo }));
+  }
+
+  pinTodo(id: ITodo['id']): void {
+    this.store.dispatch(TodoActions.pinTodo({ id }));
+  }
+
+  unpinTodo(id: ITodo['id']): void {
+    this.store.dispatch(TodoActions.unpinTodo({ id }));
   }
 
   removeTodo(id: ITodo['id']): void {

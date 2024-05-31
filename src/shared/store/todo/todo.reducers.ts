@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState, Update } from '@ngrx/entity';
-import { ITodo } from '@shared';
+import { ITodo } from '../../interfaces';
 import { TodoActions } from './todo.actions';
 import { createReducer, on } from '@ngrx/store';
 
@@ -28,6 +28,20 @@ export const todoReducer = createReducer(
     };
     return todoAdapter.updateOne(update, state);
   }),
+  on(TodoActions.todoPinned, (state, { id }) => {
+    const update: Update<ITodo> = {
+      id: id,
+      changes: { isPinned: true }
+    };
+    return todoAdapter.updateOne(update, state);
+  }),
+  on(TodoActions.todoUnpinned, (state, { id }) => {
+    const update: Update<ITodo> = {
+      id: id,
+      changes: { isPinned: false }
+    };
+    return todoAdapter.updateOne(update, state);
+  }),
   on(TodoActions.todoRemoved, (state, { id }) => {
     return todoAdapter.removeOne(id, state);
   }),
@@ -36,6 +50,8 @@ export const todoReducer = createReducer(
     TodoActions.errorCreateTodo,
     TodoActions.errorEditTodo,
     TodoActions.errorRemoveTodo,
+    TodoActions.errorPinTodo,
+    TodoActions.errorUnpinTodo,
     (state, action) => ({
       ...state,
       error: action.error,
