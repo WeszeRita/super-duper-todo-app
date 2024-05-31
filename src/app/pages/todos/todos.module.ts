@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TodoPageComponent, TodoCardComponent } from './components';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '../../../shared/shared.module';
+import { SharedModule } from '@shared';
 
 @NgModule({
   imports: [

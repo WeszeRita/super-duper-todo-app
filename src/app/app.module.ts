@@ -1,7 +1,7 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@shared';
 import { TodosModule } from './pages/todos/todos.module';
 import { TodoService, TranslationConfigModule } from '@shared';
 import { TranslateModule } from '@ngx-translate/core';
