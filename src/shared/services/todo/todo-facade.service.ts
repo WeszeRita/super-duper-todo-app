@@ -17,7 +17,7 @@ export class TodoFacadeService {
     return this.store.select(TodoSelectors.selectTodos);
   }
 
-  createNewTodo(todo:  Omit<ITodo, 'id'>): void {
+  createNewTodo(todo:  Pick<ITodo, 'title' | 'description'>): void {
     return this.store.dispatch(TodoActions.createTodo({ todo }));
   }
 

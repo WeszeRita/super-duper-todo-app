@@ -1,5 +1,5 @@
 <label class="label">
-  <span>{{ buildTranslationKey(label) | translate }}</span>
+  <p>{{ buildTranslationKey(label) | translate }}</p>
 
   <p
     *ngIf="displayText; else input"
@@ -10,7 +10,6 @@
 </label>
 
 <ng-template #input>
-  <div>
     <input
       type="text"
       [(ngModel)]="value"
@@ -23,14 +22,13 @@
       <img src="./assets/icons/close.svg" [alt]="buildTranslationKey('altForIcon') | translate">
     </button>
 
-    <button (click)="save()" [disabled]="!hasChanges || isInvalid">
+    <button [disabled]="!hasChanges || isInvalid" (click)="save()">
       <img src="./assets/icons/done.svg" [alt]="buildTranslationKey('altForIcon') | translate">
     </button>
-  </div>
 </ng-template>
 
 <p
   *ngIf="isInvalid"
   class="error-message">
-    {{ buildTranslationKey('requiredErrorMassage') | translate }}
-  </p>
+  {{ buildTranslationKey('requiredErrorMassage') | translate }}
+</p>

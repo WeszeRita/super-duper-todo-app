@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { DialogRef } from '@angular/cdk/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ITodo } from '../../interfaces';
-import { Status } from '../../enums';
 import { TodoFacadeService } from '../../services';
 import { IAddTodoForm } from '../../interfaces';
 
@@ -12,7 +11,7 @@ import { IAddTodoForm } from '../../interfaces';
   styleUrls: ['./todo-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TodoFormComponent implements OnInit{
+export class TodoFormComponent implements OnInit {
   form: FormGroup<IAddTodoForm>
 
   constructor(public dialogRef: DialogRef<string>, private fb: FormBuilder, private todoFacadeService: TodoFacadeService) {}
@@ -33,13 +32,9 @@ export class TodoFormComponent implements OnInit{
   }
 
   submit(): void {
-    const newTodo: Omit<ITodo, 'id'> = {
+    const newTodo: Pick<ITodo, 'title' | 'description'> = {
       title: this.form.value.title,
       description: this.form.value.description,
-      status: Status.todo,
-      isPinned: false,
-      createdAt: new Date().getTime(),
-      updatedAt: null,
     }
 
     this.todoFacadeService.createNewTodo(newTodo);

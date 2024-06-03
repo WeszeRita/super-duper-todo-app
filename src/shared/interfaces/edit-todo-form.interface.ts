@@ -1,7 +1,6 @@
 import { FormControl } from '@angular/forms';
 
-export
-interface IEditTodoForm {
+export interface IEditTodoForm {
   title: FormControl<string>;
   description: FormControl<string>;
 }
