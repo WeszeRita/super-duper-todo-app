@@ -32,7 +32,11 @@ export class TodoCardComponent implements OnInit {
   }
 
   togglePinned(): void {
-   this.todo.isPinned ? this.todoFacadeService.unpinTodo(this.todo.id) : this.todoFacadeService.pinTodo(this.todo.id);
+    if (this.todo.isPinned) {
+      this.todoFacadeService.unpinTodo(this.todo.id)
+    } else {
+      this.todoFacadeService.pinTodo(this.todo.id);
+    }
   }
 
   delete(id: ITodo['id']): void {

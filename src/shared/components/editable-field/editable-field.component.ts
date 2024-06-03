@@ -27,13 +27,13 @@ export class EditableFieldComponent implements ControlValueAccessor {
 
   displayText = true;
   value: string;
-  initialValue: string;
+  previousValue: string;
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
   get hasChanges(): boolean {
-    return this.initialValue !== this.value;
+    return this.value !== this.previousValue;
   }
 
   get isInvalid(): boolean {
@@ -52,18 +52,18 @@ export class EditableFieldComponent implements ControlValueAccessor {
     this.cd.detectChanges();
 
     if (!this.displayText) {
-      this.initialValue = this.value;
+      this.previousValue = this.value;
     }
   }
 
   cancel(): void {
-    this.writeValue(this.initialValue);
+    this.writeValue(this.previousValue);
     this.toggleDisplay();
   }
 
   save(): void {
     this.toggleDisplay();
-    this.initialValue = this.value;
+    this.previousValue = this.value;
     this.confirm.emit();
   }
 
@@ -84,11 +84,11 @@ export class EditableFieldComponent implements ControlValueAccessor {
     this.onTouched();
   }
 
-  buildTranslationKey(relativeKey: string): string {
-    return `todo-card.${ relativeKey }`;
-  }
-
   updateValue(): void {
     this.writeValue(this.value);
+  }
+
+  buildTranslationKey(relativeKey: string): string {
+    return `todo-card.${ relativeKey }`;
   }
 }

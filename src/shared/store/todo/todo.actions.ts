@@ -32,7 +32,7 @@ export namespace TodoActions {
   export const todoListLoaded = createAction(TodoAction.todoListLoaded, props<{ todos: ITodo[] }>());
   export const errorLoadTodoList = createAction(TodoAction.errorLoadTodoList, props<{ error: Error }>());
 
-  export const createTodo = createAction(TodoAction.createTodo, props<{ todo: Omit<ITodo, 'id'> }>());
+  export const createTodo = createAction(TodoAction.createTodo, props<{ todo: Pick<ITodo, 'title' | 'description'> }>());
   export const todoCreated = createAction(TodoAction.todoCreated, props<{ todo: ITodo }>());
   export const errorCreateTodo = createAction(TodoAction.errorCreateTodo, props<{ error: Error }>());
 

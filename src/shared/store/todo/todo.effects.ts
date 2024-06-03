@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, Observable, of, switchMap } from 'rxjs';
+import { catchError, map, mergeMap, Observable, of, switchMap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { TodoActions } from './todo.actions';
 import { ITodo } from '../../interfaces';
@@ -26,7 +26,7 @@ export class TodoEffects {
     return this.actions$
       .pipe(
         ofType(TodoActions.createTodo),
-        switchMap(({ todo }) => {
+        mergeMap(({ todo }) => {
           return this.todoService.createTodo(todo)
             .pipe(
               map((todo: ITodo) => TodoActions.todoCreated({ todo })),
@@ -40,7 +40,7 @@ export class TodoEffects {
     return this.actions$
       .pipe(
         ofType(TodoActions.editTodo),
-        switchMap(({ todo }) => {
+        mergeMap(({ todo }) => {
           return this.todoService.editTodo(todo)
             .pipe(
               map((todo: ITodo) => TodoActions.todoEdited({ todo })),
@@ -54,7 +54,7 @@ export class TodoEffects {
     return this.actions$
       .pipe(
         ofType(TodoActions.pinTodo),
-        switchMap(({ id }) => {
+        mergeMap(({ id }) => {
           return this.todoService.pinTodo(id)
             .pipe(
               map(() => TodoActions.todoPinned({ id })),
@@ -68,7 +68,7 @@ export class TodoEffects {
     return this.actions$
       .pipe(
         ofType(TodoActions.unpinTodo),
-        switchMap(({ id }) => {
+        mergeMap(({ id }) => {
           return this.todoService.unpinTodo(id)
             .pipe(
               map(() => TodoActions.todoUnpinned({ id })),
@@ -82,7 +82,7 @@ export class TodoEffects {
     return this.actions$
       .pipe(
         ofType(TodoActions.removeTodo),
-        switchMap((todo) => {
+        mergeMap((todo) => {
           const id = todo.id;
           return this.todoService.removeTodo(id)
             .pipe(

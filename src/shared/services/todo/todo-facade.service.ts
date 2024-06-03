@@ -6,7 +6,6 @@ import { ITodo } from '../../interfaces';
 
 @Injectable()
 export class TodoFacadeService {
-
   constructor(private store: Store) {}
 
   loadTodoList(): void {
@@ -17,8 +16,8 @@ export class TodoFacadeService {
     return this.store.select(TodoSelectors.selectTodos);
   }
 
-  createNewTodo(todo:  Omit<ITodo, 'id'>): void {
-    return this.store.dispatch(TodoActions.createTodo({ todo }));
+  createNewTodo(todo: Pick<ITodo, 'title' | 'description'>): void {
+    this.store.dispatch(TodoActions.createTodo({ todo }));
   }
 
   editTodo(todo: Partial<ITodo>): void {
