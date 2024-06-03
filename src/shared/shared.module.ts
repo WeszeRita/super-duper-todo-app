@@ -1,18 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '@shared'
 import { TranslateModule } from '@ngx-translate/core';
+import { TodoFormComponent, HeaderComponent, EditableFieldComponent } from './components';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { DialogModule } from '@angular/cdk/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-  ],
-  exports: [
-    HeaderComponent,
-  ],
   imports: [
     CommonModule,
     TranslateModule,
+    OverlayModule,
+    DialogModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
+  declarations: [
+    HeaderComponent,
+    TodoFormComponent,
+    EditableFieldComponent,
+  ],
+  exports: [
+    HeaderComponent,
+    EditableFieldComponent,
   ],
 })
 export class SharedModule { }

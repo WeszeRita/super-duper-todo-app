@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
-import { Language } from '@shared';
+import { Language } from '../../../enums';
 
 @Injectable()
 export class TranslationLoaderService {

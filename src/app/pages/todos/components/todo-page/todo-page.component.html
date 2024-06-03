@@ -1,0 +1,5 @@
+<span class="todo-title">{{ buildTranslationKey('title') | translate }} ({{ (todoList$ | async).length }})</span>
+
+<div class="todo-card-container">
+  <app-todo-card *ngFor="let todo of todoList$ | async; trackBy: trackById" [todo]="todo"></app-todo-card>
+</div>

@@ -1,3 +1,18 @@
+@import '@angular/cdk/overlay-prebuilt.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+button[disabled] {
+  @apply opacity-50;
+}
+
+.error {
+  @apply border-4 border-red-400;
+}
+
+.error-message {
+ @apply text-red-600 text-xs;
+}

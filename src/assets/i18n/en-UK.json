@@ -1,20 +1,29 @@
 {
   "header": {
     "title": "To do",
-    "addButtonText": "+ Add to-do"
+    "addButtonText": "+ new to-do"
   },
   "todo-page": {
     "title": "Todos"
   },
-  "todo-cards": {
-    "to-do": "To do",
-    "in-progress": "In progress",
+  "todo-card": {
+    "todo": "To do",
+    "inProgress": "In progress",
     "done": "Done",
-    "status": "Status",
-    "createdAt": "Created at",
-    "title": "Title",
-    "description": "Description",
-    "altForPinIcon": "pin it icon",
-    "altForDeleteIcon": "delete icon"
+    "status": "Status:",
+    "createdAt": "Created at:",
+    "title": "Title:",
+    "description": "Description:",
+    "altForIcon": "icon",
+    "titlePlaceholder": "Title",
+    "descriptionPlaceholder": "Description",
+    "requiredErrorMassage": "This field is required"
+  },
+  "addTodoForm": {
+    "altForCloseButton": "close button",
+    "titlePlaceholder": "Title",
+    "descriptionPlaceholder": "Description",
+    "requiredErrorMassage": "This field is required",
+    "addButtonTitle": "Add to-do"
   }
 }

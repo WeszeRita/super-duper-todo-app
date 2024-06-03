@@ -1,0 +1,34 @@
+<label class="label">
+  <p>{{ buildTranslationKey(label) | translate }}</p>
+
+  <p
+    *ngIf="displayText; else input"
+    role="button"
+    (click)="toggleDisplay()">
+    {{ value }}
+  </p>
+</label>
+
+<ng-template #input>
+    <input
+      type="text"
+      [(ngModel)]="value"
+      [class.error]="isInvalid"
+      [placeholder]="placeholder"
+      (blur)="onBlur()"
+      (input)="updateValue()">
+
+    <button (click)="cancel()">
+      <img src="./assets/icons/close.svg" [alt]="buildTranslationKey('altForIcon') | translate">
+    </button>
+
+    <button [disabled]="!hasChanges || isInvalid" (click)="save()">
+      <img src="./assets/icons/done.svg" [alt]="buildTranslationKey('altForIcon') | translate">
+    </button>
+</ng-template>
+
+<p
+  *ngIf="isInvalid"
+  class="error-message">
+  {{ buildTranslationKey('requiredErrorMassage') | translate }}
+</p>

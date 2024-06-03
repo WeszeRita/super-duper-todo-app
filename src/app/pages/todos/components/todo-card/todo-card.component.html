@@ -1,14 +1,36 @@
-  <span class="label">{{ buildTranslationKey('status') | translate }}:</span>
-  <span class="info todo-status {{ todo.status }}">{{ buildTranslationKey(todo.status) | translate }}</span>
+<form [formGroup]="form" class="form">
+  <span class="label">{{ buildTranslationKey('status') | translate }}</span>
+  <span class="todo-status {{ statusClass }}">{{ buildTranslationKey(todo.status) | translate }}</span>
 
-  <span class="label">{{ buildTranslationKey('createdAt') | translate }}:</span>
-  <span class="date info"><img src="assets/icons/calendar.svg" alt="calendar icon">{{ todo.createdAt | date }}</span>
+  <span class="label">{{ buildTranslationKey('createdAt') | translate }}</span>
+  <span class="date">
+    <img
+      src="./assets/icons/calendar.svg"
+      [alt]="buildTranslationKey('altForIcon') | translate">
+      {{ todo.createdAt | date }}
+  </span>
 
-  <span class="label">{{ buildTranslationKey('title') | translate }}:</span>
-  <span class="info">{{ todo.title }}</span>
+  <app-editable-field
+    formControlName="title"
+    [label]="'title'"
+    [placeholder]="'Title...'"
+    (confirm)="editTodo()">
+  </app-editable-field>
 
-  <span class="label">{{ buildTranslationKey('description') | translate }}:</span>
-  <span class="info">{{ todo.description }}</span>
+  <app-editable-field
+    formControlName="description"
+    [label]="'description'"
+    [placeholder]="'Description...'"
+    (confirm)="editTodo()">
+  </app-editable-field>
 
-  <button class="btn btn-pin" (click)="pin(todo.id)"><img src="assets/icons/pin.svg" [alt]="buildTranslationKey('altForPinIcon') | translate"></button>
-  <button class="btn btn-delete" (click)="delete(todo.id)"><img src="assets/icons/delete.svg" [alt]="buildTranslationKey('altForDeleteIcon') | translate"></button>
+  <button class="btn btn-pin" (click)="togglePinned()">
+    <img
+      [src]="todo.isPinned ? './assets/icons/pin-filled.svg' : './assets/icons/pin-unfilled.svg'"
+      [alt]="buildTranslationKey('altForIcon') | translate">
+  </button>
+
+  <button class="btn btn-delete" (click)="delete(todo.id)">
+    <img src="./assets/icons/delete.svg" [alt]="buildTranslationKey('altForIcon') | translate">
+  </button>
+</form>

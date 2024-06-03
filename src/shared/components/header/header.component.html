@@ -1,3 +1,8 @@
 <span class="title">{{ buildTranslationKey('title') | translate }}</span>
 
-<button class="btn btn-add">{{ buildTranslationKey('addButtonText') | translate }}</button>
+<button
+  class="btn btn-add"
+  cdkOverlayOrigin
+  (click)="openDialog()">
+  {{ buildTranslationKey('addButtonText') | translate }}
+</button>

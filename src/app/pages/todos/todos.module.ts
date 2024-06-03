@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoPageComponent, TodoCardComponent } from './components';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '@shared';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
+    ReactiveFormsModule,
+    SharedModule,
   ],
   declarations: [
     TodoPageComponent,
