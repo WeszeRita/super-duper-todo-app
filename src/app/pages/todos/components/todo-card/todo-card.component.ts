@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { IEditTodoForm, ITodo, TodoFacadeService } from '@shared';
+import { IEditTodoForm, ITodo, Status, TodoFacadeService } from '@shared';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -18,6 +18,7 @@ export class TodoCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      status: [this.todo.status],
       title: [this.todo.title, Validators.required],
       description: [this.todo.description, Validators.required],
     });
@@ -25,6 +26,10 @@ export class TodoCardComponent implements OnInit {
 
   editTodo(): void {
     this.todoFacadeService.editTodo({ id: this.todo.id, ...this.form.value } as Partial<ITodo>);
+  }
+
+  setStatus(status: Status) {
+    this.todoFacadeService.editTodo({ id: this.todo.id, status: status, ...this.form.value } as Partial<ITodo>);
   }
 
   togglePinned(): void {

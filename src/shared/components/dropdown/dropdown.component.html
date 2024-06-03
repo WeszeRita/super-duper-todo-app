@@ -2,11 +2,12 @@
 
 <ng-template #dropdown >
   <div class="dropdown" cdkMenu>
-    <button *ngFor="let status of statusValues"
+    <button
+      *ngFor="let statusValue of statusValues"
       cdkMenuItemCheckbox
       class="status-item"
-      (cdkMenuItemTriggered)="setStatus(status)">
-      {{ buildTranslationKey(status) | translate }}
+      (cdkMenuItemTriggered)="setStatus(statusValue)">
+      {{ buildTranslationKey(statusValue) | translate }}
     </button>
   </div>
 </ng-template>
