@@ -1,6 +1,6 @@
 <form [formGroup]="form" class="form">
   <span class="label">{{ buildTranslationKey('status') | translate }}</span>
-  <span class="todo-status {{ statusClass }}">{{ buildTranslationKey(todo.status) | translate }}</span>
+  <app-dropdown #menu [status]="todo.status"></app-dropdown>
 
   <span class="label">{{ buildTranslationKey('createdAt') | translate }}</span>
   <span class="date">

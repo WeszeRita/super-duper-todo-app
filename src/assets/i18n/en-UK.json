@@ -8,7 +8,7 @@
   },
   "todo-card": {
     "todo": "To do",
-    "inProgress": "In progress",
+    "in-progress": "In progress",
     "done": "Done",
     "status": "Status:",
     "createdAt": "Created at:",

@@ -1,0 +1,12 @@
+<button class="todo-status {{ statusClass }}" [cdkMenuTriggerFor]="dropdown">{{ buildTranslationKey(status) | translate }}</button>
+
+<ng-template #dropdown >
+  <div class="dropdown" cdkMenu>
+    <button *ngFor="let status of statusValues"
+      cdkMenuItemCheckbox
+      class="status-item"
+      (cdkMenuItemTriggered)="setStatus(status)">
+      {{ buildTranslationKey(status) | translate }}
+    </button>
+  </div>
+</ng-template>

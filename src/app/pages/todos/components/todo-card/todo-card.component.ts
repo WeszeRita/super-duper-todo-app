@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { IEditTodoForm, ITodo, Status, TodoFacadeService } from '@shared';
+import { IEditTodoForm, ITodo, TodoFacadeService } from '@shared';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -15,10 +15,6 @@ export class TodoCardComponent implements OnInit {
   todo: ITodo;
 
   constructor(private todoFacadeService: TodoFacadeService, private fb: FormBuilder) {}
-
-  get statusClass(): Status {
-    return Status[this.todo.status];
-  }
 
   ngOnInit(): void {
     this.form = this.fb.group({

@@ -1,0 +1,31 @@
+.todo-status {
+  @apply  px-1  w-44;
+}
+
+.in-progress {
+  @apply border-2 border-orange-500 bg-orange-200 text-orange-500;
+}
+
+.todo {
+  @apply border-2 border-red-500 bg-red-200 text-red-500;
+}
+
+.done {
+  @apply border-2 border-cyan-500 bg-cyan-200 text-cyan-500;
+}
+
+.dropdown {
+  @apply inline-flex flex-col min-w-44 max-w-72 bg-white py-1.5 border border-black;
+}
+
+.dropdown .status-item {
+  @apply size-full;
+}
+
+.status-item {
+  @apply bg-white cursor-pointer px-4 leading-8 flex items-center;
+}
+
+.status-item:hover {
+  @apply bg-gray-300;
+}

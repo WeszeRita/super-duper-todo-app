@@ -5,6 +5,8 @@ import { TodoFormComponent, HeaderComponent, EditableFieldComponent } from './co
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DialogModule } from '@angular/cdk/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { CdkMenu, CdkMenuItemCheckbox, CdkMenuTrigger } from '@angular/cdk/menu';
 
 @NgModule({
   imports: [
@@ -14,15 +16,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DialogModule,
     ReactiveFormsModule,
     FormsModule,
+    CdkMenuItemCheckbox,
+    CdkMenu,
+    CdkMenuTrigger,
   ],
   declarations: [
     HeaderComponent,
     TodoFormComponent,
     EditableFieldComponent,
+    DropdownComponent,
   ],
   exports: [
     HeaderComponent,
     EditableFieldComponent,
+    DropdownComponent,
   ],
 })
 export class SharedModule { }
