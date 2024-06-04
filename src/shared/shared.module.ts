@@ -6,7 +6,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { DialogModule } from '@angular/cdk/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
-import { CdkMenu, CdkMenuItemCheckbox, CdkMenuTrigger } from '@angular/cdk/menu';
+import { CdkMenu, CdkMenuItemRadio, CdkMenuTrigger } from '@angular/cdk/menu';
 
 @NgModule({
   imports: [
@@ -16,9 +16,9 @@ import { CdkMenu, CdkMenuItemCheckbox, CdkMenuTrigger } from '@angular/cdk/menu'
     DialogModule,
     ReactiveFormsModule,
     FormsModule,
-    CdkMenuItemCheckbox,
     CdkMenu,
     CdkMenuTrigger,
+    CdkMenuItemRadio,
   ],
   declarations: [
     HeaderComponent,
@@ -32,4 +32,4 @@ import { CdkMenu, CdkMenuItemCheckbox, CdkMenuTrigger } from '@angular/cdk/menu'
     DropdownComponent,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}

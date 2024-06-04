@@ -29,10 +29,8 @@ export class EditableFieldComponent implements ControlValueAccessor {
   value: string;
   previousValue: string;
 
-  private onChange: (value: string) => void = () => {
-  };
-  private onTouched: () => void = () => {
-  };
+  private onChange: (value: string) => void = () => {};
+  private onTouched: () => void = () => {};
 
   get hasChanges(): boolean {
     return this.value !== this.previousValue;
