@@ -6,7 +6,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { DialogModule } from '@angular/cdk/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
-import { CdkMenu, CdkMenuItemRadio, CdkMenuTrigger } from '@angular/cdk/menu';
+import { CdkMenu, CdkMenuItem, CdkMenuItemRadio, CdkMenuTrigger } from '@angular/cdk/menu';
 
 @NgModule({
   imports: [
@@ -19,6 +19,7 @@ import { CdkMenu, CdkMenuItemRadio, CdkMenuTrigger } from '@angular/cdk/menu';
     CdkMenu,
     CdkMenuTrigger,
     CdkMenuItemRadio,
+    CdkMenuItem,
   ],
   declarations: [
     HeaderComponent,
