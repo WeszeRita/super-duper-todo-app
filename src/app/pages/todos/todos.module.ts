@@ -4,6 +4,7 @@ import { TodoPageComponent, TodoCardComponent } from './components';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared';
+import { CdkMenuTrigger } from '@angular/cdk/menu';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { SharedModule } from '@shared';
     TranslateModule,
     ReactiveFormsModule,
     SharedModule,
+    CdkMenuTrigger,
   ],
   declarations: [
     TodoPageComponent,
