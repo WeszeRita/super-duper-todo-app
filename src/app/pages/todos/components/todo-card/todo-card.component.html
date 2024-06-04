@@ -1,6 +1,6 @@
 <form [formGroup]="form" class="form">
   <span class="label">{{ buildTranslationKey('status') | translate }}</span>
-  <app-dropdown #menu formControlName="status" [status]="todo.status" (setNewStatus)="setStatus($event)"></app-dropdown>
+  <app-dropdown formControlName="status" [status]="todo.status"></app-dropdown>
 
   <span class="label">{{ buildTranslationKey('createdAt') | translate }}</span>
   <span class="date">
@@ -24,13 +24,13 @@
     (confirm)="editTodo()">
   </app-editable-field>
 
-  <button class="btn btn-pin" (click)="togglePinned()">
-    <img
-      [src]="todo.isPinned ? './assets/icons/pin-filled.svg' : './assets/icons/pin-unfilled.svg'"
-      [alt]="buildTranslationKey('altForIcon') | translate">
-  </button>
+    <button class="btn btn-pin" (click)="togglePinned()">
+      <img
+        [src]="todo.isPinned ? './assets/icons/pin-filled.svg' : './assets/icons/pin-unfilled.svg'"
+        [alt]="buildTranslationKey('altForIcon') | translate">
+    </button>
 
-  <button class="btn btn-delete" (click)="delete(todo.id)">
-    <img src="./assets/icons/delete.svg" [alt]="buildTranslationKey('altForIcon') | translate">
-  </button>
+    <button class="btn btn-delete" (click)="delete(todo.id)">
+      <img src="./assets/icons/delete.svg" [alt]="buildTranslationKey('altForIcon') | translate">
+    </button>
 </form>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Status } from '@shared';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -15,25 +15,21 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class DropdownComponent implements ControlValueAccessor {
-  statusValues: Status[] = Object.values(Status);
+  statusValues: string[] = Object.keys(Status);
 
   @Input()
   status: Status;
-
-  @Output()
-  setNewStatus = new EventEmitter<Status>();
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
   get statusClass(): Status {
-    return this.status;
+    return Status[this.status];
   }
 
-  setStatus(status: Status): void {
+  setStatus(status: string): void {
     if (this.status !== status) {
       this.writeValue(status);
-      this.setNewStatus.emit(status);
     }
   }
 

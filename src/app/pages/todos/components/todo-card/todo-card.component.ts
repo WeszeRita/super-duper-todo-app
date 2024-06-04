@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
 import { IEditTodoForm, ITodo, Status, TodoFacadeService } from '@shared';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-todo-card',
@@ -14,7 +15,7 @@ export class TodoCardComponent implements OnInit {
   @Input()
   todo: ITodo;
 
-  constructor(private todoFacadeService: TodoFacadeService, private fb: FormBuilder) {}
+  constructor(private todoFacadeService: TodoFacadeService, private fb: FormBuilder, private destroyRef: DestroyRef) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -22,6 +23,10 @@ export class TodoCardComponent implements OnInit {
       title: [this.todo.title, Validators.required],
       description: [this.todo.description, Validators.required],
     });
+
+    this.form.controls.status.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(this.setStatus.bind(this));
   }
 
   editTodo(): void {
@@ -29,7 +34,7 @@ export class TodoCardComponent implements OnInit {
   }
 
   setStatus(status: Status) {
-    this.todoFacadeService.editTodo({ id: this.todo.id, status: status, ...this.form.value } as Partial<ITodo>);
+    this.todoFacadeService.editTodo({ id: this.todo.id, ...this.form.value, status: status } as Partial<ITodo>);
   }
 
   togglePinned(): void {
