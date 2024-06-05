@@ -25,6 +25,8 @@ const enum TodoAction {
   removeTodo = '[Todo] Remove todo',
   todoRemoved = '[Todo] Todo removed',
   errorRemoveTodo = '[Todo] Remove todo error',
+
+  searchTodos = '[Todo] search todo',
 }
 
 export namespace TodoActions {
@@ -51,4 +53,6 @@ export namespace TodoActions {
   export const removeTodo = createAction(TodoAction.removeTodo, props<{ id: ITodo['id'] }>());
   export const todoRemoved = createAction(TodoAction.todoRemoved, props<{ id: ITodo['id'] }>());
   export const errorRemoveTodo = createAction(TodoAction.errorRemoveTodo, props<{ error: Error }>());
+
+  export const searchTodos = createAction(TodoAction.searchTodos, props<{ searchTerm: string }>());
 }

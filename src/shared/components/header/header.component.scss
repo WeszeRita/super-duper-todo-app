@@ -1,5 +1,9 @@
-:host {
+.title-line {
   @apply m-6 flex justify-between;
+}
+
+.search-sort {
+  @apply m-6;
 }
 
 .title {

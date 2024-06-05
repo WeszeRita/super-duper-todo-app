@@ -15,7 +15,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class DropdownComponent implements ControlValueAccessor {
-  statusValues: string[] = Object.keys(Status);
+  statusOptions: string[] = Object.keys(Status);
 
   @Input()
   status: Status;

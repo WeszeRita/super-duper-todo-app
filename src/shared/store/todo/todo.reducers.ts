@@ -4,12 +4,14 @@ import { TodoActions } from './todo.actions';
 import { createReducer, on } from '@ngrx/store';
 
 export interface ITodoState extends EntityState<ITodo> {
+  searchTerm: string;
   error: Error;
 }
 
 export const todoAdapter: EntityAdapter<ITodo> = createEntityAdapter<ITodo>();
 
 export const initialState: ITodoState = todoAdapter.getInitialState({
+  searchTerm: undefined,
   error: undefined,
 });
 
@@ -45,6 +47,10 @@ export const todoReducer = createReducer(
   on(TodoActions.todoRemoved, (state, { id }) => {
     return todoAdapter.removeOne(id, state);
   }),
+  on(TodoActions.searchTodos, (state, { searchTerm }) => ({
+    ...state,
+    searchTerm: searchTerm,
+  })),
   on(
     TodoActions.errorLoadTodoList,
     TodoActions.errorCreateTodo,

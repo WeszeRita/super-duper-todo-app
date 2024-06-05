@@ -4,7 +4,9 @@
     "addButtonText": "+ new to-do"
   },
   "todo-page": {
-    "title": "Todos"
+    "title": "Todos",
+    "noTodoFound": "No todos are matching",
+    "suggestion": "Try another search term"
   },
   "todo-card": {
     "todo": "To do",
@@ -25,5 +27,8 @@
     "descriptionPlaceholder": "Description",
     "requiredErrorMassage": "This field is required",
     "addButtonTitle": "Add to-do"
+  },
+  "search": {
+    "searchInputPlaceholder": "Search..."
   }
 }

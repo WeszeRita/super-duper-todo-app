@@ -15,7 +15,7 @@ export class TodoPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoFacadeService.loadTodoList();
-    this.todoList$ = this.todoFacadeService.getTodoList()
+    this.todoList$ = this.todoFacadeService.getSearchedTodos()
       .pipe(
         shareReplay({ bufferSize: 1, refCount: true }),
       );
