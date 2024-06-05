@@ -13,13 +13,22 @@ export namespace TodoSelectors {
     todoAdapter.getSelectors().selectAll,
   );
 
+  export const orderedTodos = createSelector(
+    selectTodos,
+    (todos: ITodo[]) => {
+      return todos.sort((a: ITodo, b: ITodo) => {
+        return (b.isPinned ? 1 : 0) - (a.isPinned ? 1 : 0);
+      });
+    }
+  );
+
   export const searchTerm = createSelector(
     selectTodoFeature,
     (state: ITodoState) => state.searchTerm,
   );
 
   export const filteredTodos = () => createSelector(
-    selectTodos,
+    orderedTodos,
     searchTerm,
     (todos: ITodo[], searchTerm) => {
       if (!searchTerm) {

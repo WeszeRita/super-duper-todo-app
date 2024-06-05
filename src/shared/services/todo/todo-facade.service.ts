@@ -12,10 +12,6 @@ export class TodoFacadeService {
     this.store.dispatch(TodoActions.loadTodoList());
   }
 
-  getTodoList(): Observable<ITodo[]> {
-    return this.store.select(TodoSelectors.selectTodos);
-  }
-
   createNewTodo(todo: Pick<ITodo, 'title' | 'description'>): void {
     this.store.dispatch(TodoActions.createTodo({ todo }));
   }
@@ -39,7 +35,6 @@ export class TodoFacadeService {
   searchTodo(searchTerm: string): void {
     this.store.dispatch(TodoActions.searchTodos({ searchTerm }));
   }
-
 
   getSearchedTodos(): Observable<ITodo[]> {
     return this.store.select(TodoSelectors.filteredTodos());
