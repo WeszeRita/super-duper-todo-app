@@ -5,3 +5,7 @@
 .todo-card-container {
   @apply flex flex-col gap-10 m-6;
 }
+
+.not-found {
+  @apply m-6 text-red-500 border-2 border-red-500 rounded bg-red-100 p-2 w-fit;
+}

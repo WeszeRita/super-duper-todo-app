@@ -5,6 +5,8 @@
 </div>
 
 <ng-template #notFound>
-  <p>{{ buildTranslationKey('noTodoFound') | translate }}</p>
-  <p>{{ buildTranslationKey('suggestion') | translate }}</p>
+  <div class="not-found" >
+    <p>{{ buildTranslationKey('noTodoFound') | translate }}</p>
+    <p>{{ buildTranslationKey('suggestion') | translate }}</p>
+  </div>
 </ng-template>
