@@ -29,6 +29,7 @@
     "addButtonTitle": "Add to-do"
   },
   "search": {
-    "searchInputPlaceholder": "Search..."
+    "searchInputPlaceholder": "Search...",
+    "altForIcon": "icon"
   }
 }

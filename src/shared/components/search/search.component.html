@@ -1,4 +1,4 @@
 <div class="search">
-  <img class="icon" src="assets/icons/search.svg">
+  <img class="icon" src="assets/icons/search.svg" [alt]="buildTranslationKey('altForIcon') | translate">
    <input class="input" [placeholder]="buildTranslationKey('searchInputPlaceholder') | translate" type="text" [formControl]="searchTermInput">
 </div>
