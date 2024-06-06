@@ -17,19 +17,19 @@ export namespace TodoSelectors {
     selectTodos,
     (todos: ITodo[]) => {
       return todos.sort((a: ITodo, b: ITodo) => {
-        return (b.isPinned ? 1 : 0) - (a.isPinned ? 1 : 0);
+        return (+b.isPinned) - (+a.isPinned);
       });
     }
   );
 
-  export const searchTerm = createSelector(
+  export const selectSearchTerm = createSelector(
     selectTodoFeature,
     (state: ITodoState) => state.searchTerm,
   );
 
   export const filteredTodos = () => createSelector(
     orderedTodos,
-    searchTerm,
+    selectSearchTerm,
     (todos: ITodo[], searchTerm) => {
       if (!searchTerm) {
         return todos;
