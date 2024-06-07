@@ -1,0 +1,16 @@
+<div class="form-element">
+  <input
+    class="form-input"
+    [class.error]="formFieldControl.invalid && formFieldControl.touched"
+    type="text"
+    [value]="value"
+    placeholder="{{ placeholder }}"
+    (input)="change($event)"
+    (blur)="onTouched()">
+
+    <span
+      *ngIf="formFieldControl.invalid && formFieldControl.touched"
+      class="error-message">
+      {{ buildTranslationKey('requiredErrorMassage') | translate }}
+    </span>
+</div>

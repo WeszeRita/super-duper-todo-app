@@ -18,7 +18,6 @@ import { TodoFacadeService } from '@shared';
   ],
 })
 export class SearchComponent implements OnInit, ControlValueAccessor {
-  value: string;
   searchTermInput = new FormControl(null);
 
   private onChange: (value: string) => void = () => {};
@@ -33,16 +32,11 @@ export class SearchComponent implements OnInit, ControlValueAccessor {
         distinctUntilChanged(),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe(() => this.todoFacadeService.searchTodo(this.value));
-  }
-
-  setValue(input: Event): void {
-    this.writeValue((input.target as HTMLInputElement).value);
+      .subscribe((value) => this.todoFacadeService.searchTodo(value));
   }
 
   writeValue(value: string): void {
-    this.value = value;
-    this.onChange(this.value);
+    this.searchTermInput.setValue(value);
   }
 
   registerOnChange(fn: any): void {

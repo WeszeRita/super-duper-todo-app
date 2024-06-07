@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 import { SearchComponent } from './components/search/search.component';
+import { TextInputComponent } from './components/text-input/text-input.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { SearchComponent } from './components/search/search.component';
     EditableFieldComponent,
     DropdownComponent,
     SearchComponent,
+    TextInputComponent,
   ],
   exports: [
     HeaderComponent,
