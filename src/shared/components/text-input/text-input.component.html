@@ -1,16 +1,17 @@
-<div class="form-element">
+<!--<div class="form-element">-->
   <input
+    formControlName="title"
     class="form-input"
-    [class.error]="formFieldControl.invalid && formFieldControl.touched"
+    [class.error]="isInvalid && isTouched"
     type="text"
-    [value]="value"
     placeholder="{{ placeholder }}"
+    [value]="value"
     (input)="change($event)"
     (blur)="onTouched()">
 
     <span
-      *ngIf="formFieldControl.invalid && formFieldControl.touched"
+      *ngIf="isInvalid && isTouched"
       class="error-message">
       {{ buildTranslationKey('requiredErrorMassage') | translate }}
     </span>
-</div>
+<!--</div>-->

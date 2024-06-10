@@ -7,9 +7,9 @@
 }
 
 .input {
-  @apply bg-gray-200 p-1 border-gray-400 rounded-r-md;
+  @apply bg-gray-200 p-1 border-none rounded-r-md;
 }
 
-.input:focus {
+.input::ng-deep:focus {
   @apply outline-none;
 }

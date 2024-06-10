@@ -1,39 +1,37 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, Input, Optional, Self } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-text-input',
   templateUrl: './text-input.component.html',
   styleUrls: ['./text-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: TextInputComponent,
-      multi: true,
-    }
-  ]
 })
 export class TextInputComponent implements ControlValueAccessor {
-  @Input()
-  parentForm: FormGroup;
-
-  @Input()
-  fieldName: string;
-
   @Input()
   label: string;
 
   @Input()
   placeholder: string;
 
+  @Input()
   value: string;
+
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
 
+  get isInvalid(): boolean {
+    return this.control ? this.control.invalid : false;
+  }
 
-  get formFieldControl(): FormControl<string> {
-    return this.parentForm.controls[this.fieldName] as FormControl;
+  get isTouched(): boolean {
+    return this.control ? this.control.touched : false;
+  }
+
+  constructor(
+    @Self() @Optional() protected control: NgControl,
+  ) {
+    this.control.valueAccessor = this;
   }
 
   writeValue(value: string): void {
