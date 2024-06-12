@@ -39,7 +39,7 @@ export class TextInputComponent implements ControlValueAccessor {
   }
 
   change(event: Event): void {
-    const value: string = (event.target as HTMLInputElement).value;   // itt minden 3. nulla után közt is rakhatunk, vagy bármit manipulálhatunk
+    const value: string = (event.target as HTMLInputElement).value;
     this.onChange(value);
   }
 

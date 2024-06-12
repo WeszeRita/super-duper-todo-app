@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
-import { IEditTodoForm, ITodo, Status, TodoFacadeService } from '@shared';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ITodo, Status, TodoFacadeService } from '@shared';
+import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -10,31 +10,31 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoCardComponent implements OnInit {
-  form: FormGroup<IEditTodoForm>;
+  statusControl: FormControl<Status>;
 
   @Input()
   todo: ITodo;
 
-  constructor(private todoFacadeService: TodoFacadeService, private fb: FormBuilder, private destroyRef: DestroyRef) {}
+  constructor(private todoFacadeService: TodoFacadeService, private destroyRef: DestroyRef) {}
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      status: [this.todo.status],
-      title: [this.todo.title, Validators.required],
-      description: [this.todo.description, Validators.required],
-    });
+    this.statusControl = new FormControl<Status>(this.todo.status);
 
-    this.form.controls.status.valueChanges
+    this.statusControl.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(this.setStatus.bind(this));
   }
 
-  editTodo(): void {
-    this.todoFacadeService.editTodo({ id: this.todo.id, ...this.form.value } as Partial<ITodo>);
+  setTitle(title: string): void {
+    this.todoFacadeService.editTodo({ id: this.todo.id, title } as Partial<ITodo>);
   }
 
-  setStatus(status: Status) {
-    this.todoFacadeService.editTodo({ id: this.todo.id, ...this.form.value, status: status } as Partial<ITodo>);
+  setDescription(description: string): void {
+    this.todoFacadeService.editTodo({ id: this.todo.id, description } as Partial<ITodo>);
+  }
+
+  setStatus(status: Status): void {
+    this.todoFacadeService.editTodo({ id: this.todo.id, status } as Partial<ITodo>);
   }
 
   togglePinned(): void {

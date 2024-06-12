@@ -9,6 +9,10 @@ button[disabled] {
   @apply opacity-50;
 }
 
+input:focus {
+  @apply outline-none;
+}
+
 .error {
   @apply border-2 border-red-400;
 }
