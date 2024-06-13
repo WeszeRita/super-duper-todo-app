@@ -32,10 +32,6 @@ export class TodoFacadeService {
     this.store.dispatch(TodoActions.removeTodo({ id }));
   }
 
-  searchTodo(searchTerm: string): void {
-    this.store.dispatch(TodoActions.searchTodos({ searchTerm }));
-  }
-
   getSearchedTodos(): Observable<ITodo[]> {
     return this.store.select(TodoSelectors.filteredTodos());
   }

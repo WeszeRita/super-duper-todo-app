@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
-import { TodoFacadeService } from '@shared';
+import { SearchFacadeService } from '../../services/search/search-facade.service';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +13,7 @@ import { TodoFacadeService } from '@shared';
 export class SearchComponent implements OnInit {
   searchTermInput = new FormControl(null);
 
-  constructor(private destroyRef: DestroyRef, private todoFacadeService: TodoFacadeService) {}
+  constructor(private destroyRef: DestroyRef, private searchFacadeService: SearchFacadeService) {}
 
   ngOnInit(): void {
     this.searchTermInput.valueChanges
@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
         distinctUntilChanged(),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((value) => this.todoFacadeService.searchTodo(value));
+      .subscribe((value: string) => this.searchFacadeService.searchTodo(value));
   }
 
   buildTranslationKey(relativeKey: string): string {

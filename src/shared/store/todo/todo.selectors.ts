@@ -1,7 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ITodoState, todoAdapter } from './todo.reducers';
-import { ITodo } from '@shared';
+import { ITodo } from '../../interfaces/todo.interface';
 import { normalize } from '../../utils/normalize.util';
+import { SearchTermSelectors } from '../search';
 
 export const todoFeatureKey = 'todos';
 
@@ -10,7 +11,7 @@ export namespace TodoSelectors {
 
   export const selectTodos = createSelector(
     selectTodoFeature,
-    todoAdapter.getSelectors().selectAll,
+    (state: ITodoState) => todoAdapter.getSelectors().selectAll(state.todos),
   );
 
   export const orderedTodos = createSelector(
@@ -22,14 +23,9 @@ export namespace TodoSelectors {
     }
   );
 
-  export const selectSearchTerm = createSelector(
-    selectTodoFeature,
-    (state: ITodoState) => state.searchTerm,
-  );
-
   export const filteredTodos = () => createSelector(
     orderedTodos,
-    selectSearchTerm,
+    SearchTermSelectors.selectSearchTerm,
     (todos: ITodo[], searchTerm) => {
       if (!searchTerm) {
         return todos;
