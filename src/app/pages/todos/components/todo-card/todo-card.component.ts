@@ -25,11 +25,11 @@ export class TodoCardComponent implements OnInit {
       .subscribe(this.setStatus.bind(this));
   }
 
-  setTitle(title: string): void {
+  setTitle(title: ITodo['title']): void {
     this.todoFacadeService.editTodo({ id: this.todo.id, title } as Partial<ITodo>);
   }
 
-  setDescription(description: string): void {
+  setDescription(description: ITodo['description']): void {
     this.todoFacadeService.editTodo({ id: this.todo.id, description } as Partial<ITodo>);
   }
 

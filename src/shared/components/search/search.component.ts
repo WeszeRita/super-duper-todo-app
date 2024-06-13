@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
         distinctUntilChanged(),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((value: string) => this.searchFacadeService.searchTodo(value));
+      .subscribe((value: string) => this.searchFacadeService.search(value));
   }
 
   buildTranslationKey(relativeKey: string): string {
