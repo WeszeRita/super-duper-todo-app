@@ -3,11 +3,11 @@
 <ng-template #dropdown>
   <div class="dropdown" cdkMenu>
     <button
-      *ngFor="let statusValue of statusValues"
+      *ngFor="let statusOption of statusOptions"
       cdkMenuItem
       class="status-item"
-      (click)="setStatus(statusValue)">
-      {{ buildTranslationKey(statusValue) | translate }}
+      (click)="setStatus(statusOption)">
+      {{ buildTranslationKey(statusOption) | translate }}
     </button>
   </div>
 </ng-template>

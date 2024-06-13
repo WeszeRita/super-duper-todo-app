@@ -1,5 +1,12 @@
 <span class="todo-title">{{ buildTranslationKey('title') | translate }} ({{ (todoList$ | async).length }})</span>
 
-<div class="todo-card-container">
+<div *ngIf="(todoList$ | async).length > 0; else notFound" class="todo-card-container">
   <app-todo-card *ngFor="let todo of todoList$ | async; trackBy: trackById" [todo]="todo"></app-todo-card>
 </div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <p>{{ buildTranslationKey('noTodoFound') | translate }}</p>
+    <p>{{ buildTranslationKey('suggestion') | translate }}</p>
+  </div>
+</ng-template>

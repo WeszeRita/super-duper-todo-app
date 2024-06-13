@@ -1,8 +1,10 @@
-<form [formGroup]="form" class="form">
+<form class="form">
   <span class="label">{{ buildTranslationKey('status') | translate }}</span>
-  <app-dropdown formControlName="status" [status]="todo.status"></app-dropdown>
+
+  <app-dropdown [formControl]="statusControl" [status]="todo.status"></app-dropdown>
 
   <span class="label">{{ buildTranslationKey('createdAt') | translate }}</span>
+
   <span class="date">
     <img
       src="./assets/icons/calendar.svg"
@@ -11,17 +13,17 @@
   </span>
 
   <app-editable-field
-    formControlName="title"
+    [value]="todo.title"
     [label]="'title'"
     [placeholder]="'Title...'"
-    (confirm)="editTodo()">
+    (confirm)="setTitle($event)">
   </app-editable-field>
 
   <app-editable-field
-    formControlName="description"
+    [value]="todo.description"
     [label]="'description'"
     [placeholder]="'Description...'"
-    (confirm)="editTodo()">
+    (confirm)="setDescription($event)">
   </app-editable-field>
 
     <button class="btn btn-pin" (click)="togglePinned()">

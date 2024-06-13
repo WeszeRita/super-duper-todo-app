@@ -6,7 +6,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { DialogModule } from '@angular/cdk/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
-import { CdkMenu, CdkMenuItem, CdkMenuItemRadio, CdkMenuTrigger } from '@angular/cdk/menu';
+import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
+import { SearchComponent } from './components/search/search.component';
+import { TextInputComponent } from './components/text-input/text-input.component';
 
 @NgModule({
   imports: [
@@ -18,7 +20,6 @@ import { CdkMenu, CdkMenuItem, CdkMenuItemRadio, CdkMenuTrigger } from '@angular
     FormsModule,
     CdkMenu,
     CdkMenuTrigger,
-    CdkMenuItemRadio,
     CdkMenuItem,
   ],
   declarations: [
@@ -26,6 +27,8 @@ import { CdkMenu, CdkMenuItem, CdkMenuItemRadio, CdkMenuTrigger } from '@angular
     TodoFormComponent,
     EditableFieldComponent,
     DropdownComponent,
+    SearchComponent,
+    TextInputComponent,
   ],
   exports: [
     HeaderComponent,

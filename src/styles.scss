@@ -9,8 +9,12 @@ button[disabled] {
   @apply opacity-50;
 }
 
+input:focus {
+  @apply outline-none;
+}
+
 .error {
-  @apply border-4 border-red-400;
+  @apply border-2 border-red-400;
 }
 
 .error-message {

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { DialogRef } from '@angular/cdk/dialog';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ITodo } from '../../interfaces';
 import { TodoFacadeService } from '../../services';
 import { IAddTodoForm } from '../../interfaces';
@@ -15,14 +15,6 @@ export class TodoFormComponent implements OnInit {
   form: FormGroup<IAddTodoForm>
 
   constructor(private dialogRef: DialogRef<string>, private fb: FormBuilder, private todoFacadeService: TodoFacadeService) {}
-
-  get titleControl(): FormControl<string> {
-    return this.form.controls.title;
-  }
-
-  get descriptionControl(): FormControl<string> {
-    return this.form.controls.description;
-  }
 
   ngOnInit(): void {
     this.form = this.fb.group({

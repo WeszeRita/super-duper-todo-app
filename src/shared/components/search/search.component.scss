@@ -1,0 +1,11 @@
+.search {
+  @apply flex;
+}
+
+.icon {
+  @apply bg-gray-200 p-1 border-gray-400 rounded-l-md;
+}
+
+.input {
+  @apply bg-gray-200 p-1 border-none rounded-r-md;
+}

@@ -1,8 +1,15 @@
-<span class="title">{{ buildTranslationKey('title') | translate }}</span>
+<div class="title-line">
+  <span class="title">{{ buildTranslationKey('title') | translate }}</span>
 
-<button
-  class="btn btn-add"
-  cdkOverlayOrigin
-  (click)="openDialog()">
-  {{ buildTranslationKey('addButtonText') | translate }}
-</button>
+  <button
+    cdkOverlayOrigin
+    class="btn btn-add"
+    (click)="openDialog()">
+    {{ buildTranslationKey('addButtonText') | translate }}
+  </button>
+</div>
+
+<div class="search-sort">
+  <app-search></app-search>
+</div>
+
