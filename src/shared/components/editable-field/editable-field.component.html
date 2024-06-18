@@ -1,19 +1,17 @@
-<label class="label">
-  <p>{{ buildTranslationKey(label) | translate }}</p>
-
-  <p *ngIf="!fieldControl; else input" role="button" (click)="enableEditing()">
-    {{ value }}
-  </p>
+<label class="label">{{ label }}
+  <p *ngIf="!fieldControl; else input" role="button" (click)="enableEditing()">{{ value }}</p>
 </label>
 
 <ng-template #input>
-  <app-text-input [formControl]="fieldControl" [placeholder]="placeholder"></app-text-input>
+  <div class="flex">
+    <app-text-input [formControl]="fieldControl"></app-text-input>
 
-  <button (click)="cancel()">
-    <img [alt]="buildTranslationKey('altForIcon') | translate" src="./assets/icons/close.svg">
-  </button>
+    <button (click)="cancel()">
+      <img src="./assets/icons/close.svg">
+    </button>
 
-  <button (click)="save()" [disabled]="!hasChanges">
-    <img [alt]="buildTranslationKey('altForIcon') | translate" src="./assets/icons/done.svg">
-  </button>
+    <button (click)="save()" [disabled]="!hasChanges">
+      <img src="./assets/icons/done.svg">
+    </button>
+  </div>
 </ng-template>

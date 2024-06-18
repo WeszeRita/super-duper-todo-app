@@ -35,7 +35,7 @@ export class EditableFieldComponent {
   constructor(private cd: ChangeDetectorRef) {}
 
   enableEditing(): void {
-    this.fieldControl = new FormControl<string>(this.value || '')
+    this.fieldControl = new FormControl<string>(this.value || '');
   }
 
   save(): void {
@@ -46,10 +46,6 @@ export class EditableFieldComponent {
 
   cancel(): void {
     this.resetField();
-  }
-
-  buildTranslationKey(relativeKey: string): string {
-    return `todo-card.${ relativeKey }`;
   }
 
   private resetField(): void {

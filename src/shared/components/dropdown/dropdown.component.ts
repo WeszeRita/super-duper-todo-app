@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Status } from '@shared';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { IOption } from '../../interfaces/option.interface';
 
 @Component({
   selector: 'app-dropdown',
@@ -15,22 +16,30 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class DropdownComponent implements ControlValueAccessor {
-  statusOptions: string[] = Object.keys(Status);
+  @Input()
+  icon: string;
 
   @Input()
-  status: Status;
+  status: string;
+
+  @Input()
+  statusClass: Status;
+
+  @Input()
+  name: string;
+
+  @Input()
+  options: IOption[];
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  get statusClass(): Status {
-    return Status[this.status];
-  }
 
-  setStatus(status: string): void {
-    if (this.status !== status) {
-      this.writeValue(status);
+  setStatus(statusId: string, translatedValue: string): void {
+    if (this.status !== statusId) {
+      this.writeValue(statusId);
     }
+    this.name = translatedValue;
   }
 
   writeValue(status: any): void {
@@ -44,9 +53,5 @@ export class DropdownComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-  }
-
-  buildTranslationKey(relativeKey: string): string {
-    return `todo-card.${ relativeKey }`;
   }
 }

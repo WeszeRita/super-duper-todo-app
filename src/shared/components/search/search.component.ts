@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
@@ -11,6 +11,9 @@ import { SearchFacadeService } from '../../services/search/search-facade.service
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent implements OnInit {
+  @Input()
+  placeholder: string;
+
   searchTermInput = new FormControl(null);
 
   constructor(private destroyRef: DestroyRef, private searchFacadeService: SearchFacadeService) {}
@@ -23,9 +26,5 @@ export class SearchComponent implements OnInit {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe((value: string) => this.searchFacadeService.search(value));
-  }
-
-  buildTranslationKey(relativeKey: string): string {
-    return `search.${ relativeKey }`;
   }
 }
