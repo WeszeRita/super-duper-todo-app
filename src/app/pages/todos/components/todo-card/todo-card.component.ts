@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
-import { ITodo, Status, TodoFacadeService } from '@shared';
+import { IOption, ITodo, Status, TodoFacadeService } from '@shared';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -11,9 +11,27 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class TodoCardComponent implements OnInit {
   statusControl: FormControl<Status>;
+  options: IOption[] = [
+    {
+      id: Status.todo,
+      value: `${this.buildTranslationKey(Status.todo)}`,
+    },
+    {
+      id: Status.inProgress,
+      value: `${this.buildTranslationKey(Status.inProgress)}`,
+    },
+    {
+      id: Status.done,
+      value: `${this.buildTranslationKey(Status.done)}`,
+    }
+  ];
 
   @Input()
   todo: ITodo;
+
+  get statusClass(): Status {
+    return Status[this.todo.status];
+  }
 
   constructor(private todoFacadeService: TodoFacadeService, private destroyRef: DestroyRef) {}
 
@@ -39,7 +57,7 @@ export class TodoCardComponent implements OnInit {
 
   togglePinned(): void {
     if (this.todo.isPinned) {
-      this.todoFacadeService.unpinTodo(this.todo.id)
+      this.todoFacadeService.unpinTodo(this.todo.id);
     } else {
       this.todoFacadeService.pinTodo(this.todo.id);
     }

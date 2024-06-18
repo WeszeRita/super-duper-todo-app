@@ -1,7 +1,12 @@
 <form class="form">
   <span class="label">{{ buildTranslationKey('status') | translate }}</span>
 
-  <app-dropdown [formControl]="statusControl" [status]="todo.status"></app-dropdown>
+  <app-dropdown
+    [formControl]="statusControl"
+    [name]="buildTranslationKey(todo.status)"
+    [options]="options"
+    [statusClass]="statusClass">
+  </app-dropdown>
 
   <span class="label">{{ buildTranslationKey('createdAt') | translate }}</span>
 
@@ -14,15 +19,13 @@
 
   <app-editable-field
     [value]="todo.title"
-    [label]="'title'"
-    [placeholder]="'Title...'"
+    [label]="buildTranslationKey('titleLabel') | translate"
     (confirm)="setTitle($event)">
   </app-editable-field>
 
   <app-editable-field
     [value]="todo.description"
-    [label]="'description'"
-    [placeholder]="'Description...'"
+    [label]="buildTranslationKey('descriptionLabel') | translate"
     (confirm)="setDescription($event)">
   </app-editable-field>
 

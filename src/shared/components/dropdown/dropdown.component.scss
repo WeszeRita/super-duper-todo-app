@@ -1,8 +1,12 @@
-.todo-status {
-  @apply px-1 w-44;
+.button-title {
+  @apply w-44 flex justify-center;
 }
 
-.in-progress {
+.button-title img {
+  @apply pr-2;
+}
+
+.inProgress {
   @apply border-2 border-orange-500 bg-orange-200 text-orange-500;
 }
 
@@ -18,14 +22,14 @@
   @apply inline-flex flex-col min-w-44 max-w-72 bg-white py-1.5 border border-black;
 }
 
-.dropdown .status-item {
+.dropdown .option-item {
   @apply size-full;
 }
 
-.status-item {
+.option-item {
   @apply bg-white cursor-pointer px-4 leading-8 flex items-center;
 }
 
-.status-item:hover {
+.option-item:hover {
   @apply bg-gray-300;
 }

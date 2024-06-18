@@ -10,7 +10,13 @@
 </div>
 
 <div class="search-sort">
-  <app-search></app-search>
-  <app-dropdown></app-dropdown>
+  <app-search [placeholder]="buildTranslationKey('searchPlaceholder') | translate"></app-search>
+
+  <app-dropdown
+    [formControl]="sortControl"
+    [icon]="iconSrc"
+    [options]="options"
+    [name]="options[0].value">
+  </app-dropdown>
 </div>
 

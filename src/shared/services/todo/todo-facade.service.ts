@@ -33,6 +33,6 @@ export class TodoFacadeService {
   }
 
   getSearchedTodos(): Observable<ITodo[]> {
-    return this.store.select(TodoSelectors.filteredTodos());
+    return this.store.select(TodoSelectors.orderedTodos);
   }
 }

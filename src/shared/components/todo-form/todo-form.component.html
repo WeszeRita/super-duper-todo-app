@@ -5,12 +5,14 @@
 
   <app-text-input
     formControlName="title"
-    [placeholder]="buildTranslationKey('titlePlaceholder') | translate">
+    [placeholder]="buildTranslationKey('titlePlaceholder') | translate"
+    [errorMassage]="buildTranslationKey('requiredErrorMassage') | translate">
   </app-text-input>
 
   <app-text-input
     formControlName="description"
-    [placeholder]="buildTranslationKey('descriptionPlaceholder') | translate">
+    [placeholder]="buildTranslationKey('descriptionPlaceholder') | translate"
+    [errorMassage]="buildTranslationKey('requiredErrorMassage') | translate">
   </app-text-input>
 
   <button class="btn btn-ok" [disabled]="form.invalid">
