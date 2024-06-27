@@ -1,6 +1,18 @@
 {
   "todos": [
     {
+      "id": "0fd081f1-8553-4d2e-9803-0924685dd932",
+      "title": "Learn Jasmine and Karma for writing unit tests in Angular.",
+      "description": "Write unit tests for services and components used in the to-do app.",
+      "status": "todo",
+      "tags": [
+        "Education"
+      ],
+      "isPinned": true,
+      "createdAt": 1699724756921,
+      "updatedAt": 1703421762383
+    },
+    {
       "id": "92456955-d6b0-4fb6-a04d-ceae9c6dbac9",
       "title": "Morning Exercise.",
       "description": "Complete a 30-minute workout session in the morning.",
@@ -9,9 +21,9 @@
         "Health",
         "Fitness"
       ],
-      "isPinned": false,
+      "isPinned": true,
       "createdAt": 1702157413274,
-      "updatedAt": 1719500726873
+      "updatedAt": 1715943137545
     },
     {
       "id": "290df5b1-86c7-4dd6-8b3f-951b5bc44827",
@@ -27,6 +39,20 @@
       "updatedAt": 1703421680448
     },
     {
+      "id": "465a2547-5d56-47d3-8f3b-d4fe950fe60d",
+      "title": "Family Movie Night.",
+      "description": "Choose a family-friendly movie and plan a movie night at home.",
+      "status": "done",
+      "tags": [
+        "Family",
+        "Entertainment",
+        "Home"
+      ],
+      "isPinned": false,
+      "createdAt": 1703421553758,
+      "updatedAt": 1703421668778
+    },
+    {
       "id": "6038db5f-6591-4aa8-9fc2-a2ae0bb29563",
       "title": "Gardening.",
       "description": "Plant new flowers and herbs in the backyard garden.",
@@ -36,59 +62,19 @@
         "Gardening",
         "dsfgfbg"
       ],
-      "isPinned": false,
+      "isPinned": true,
       "createdAt": 1703421614253,
-      "updatedAt": 1719499537939
+      "updatedAt": 1715943210951
     },
     {
       "id": "9dcdb4d1-f651-4c9d-8858-54447e009afd",
       "title": "gh",
       "description": "gh",
-      "status": "inProgress",
+      "status": "todo",
       "tags": [],
       "isPinned": false,
       "createdAt": 1715943246965,
-      "updatedAt": 1719500647774
-    },
-    {
-      "id": "976b2736-c452-4712-a54c-0b666302cf3f",
-      "title": "bb",
-      "description": "bb",
-      "status": "inProgress",
-      "tags": [],
-      "isPinned": false,
-      "createdAt": 1719485590743,
-      "updatedAt": 1719500649661
-    },
-    {
-      "id": "f9a6ea34-3fe4-4d71-81bc-c5336c49ca4d",
-      "title": "aa",
-      "description": "ww",
-      "status": "todo",
-      "tags": [],
-      "isPinned": false,
-      "createdAt": 1719485602155,
-      "updatedAt": null
-    },
-    {
-      "id": "84915768-8b01-48f3-9aca-dac5d9d25104",
-      "title": "cc",
-      "description": "cc",
-      "status": "todo",
-      "tags": [],
-      "isPinned": false,
-      "createdAt": 1719485613145,
-      "updatedAt": null
-    },
-    {
-      "id": "935e7aa9-2e5c-4488-bc70-ed7559a7f874",
-      "title": "aa",
-      "description": "aa",
-      "status": "todo",
-      "tags": [],
-      "isPinned": false,
-      "createdAt": 1719485618504,
-      "updatedAt": null
+      "updatedAt": 1717405419652
     }
   ],
   "user": {
