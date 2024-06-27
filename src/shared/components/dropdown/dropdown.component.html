@@ -1,13 +1,17 @@
-<button class="button-title {{ statusClass }}" [cdkMenuTriggerFor]="dropdown"><img src="{{ icon }}">{{ name | translate }}</button>
+<button
+  class="button-title {{ initialValue }}"
+  [cdkMenuTriggerFor]="dropdown">
+  <img src="{{ icon }}">{{ initialValue }}
+</button>
 
 <ng-template #dropdown>
-  <div class="dropdown" cdkMenu>
+  <div cdkMenu class="dropdown">
     <button
       *ngFor="let option of options"
       class="option-item"
       cdkMenuItem
-      (click)="setStatus(option.id, option.value)">
-      {{ option.value | translate }}
+      (click)="setStatus(option.id)">
+      {{ option.value }}
     </button>
   </div>
 </ng-template>

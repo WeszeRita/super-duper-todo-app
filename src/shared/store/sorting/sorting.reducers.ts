@@ -1,13 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { SortingActions } from './sorting.actions';
-import { IOption, SortTerm } from '@shared';
+import { IOption, SortOption } from '@shared';
 
 export interface ISortTermState {
   sortTermId: IOption['id'];
 }
 
 export const initialState: ISortTermState = {
-  sortTermId: SortTerm.date,
+  sortTermId: SortOption.date,
 }
 
 export const sortReducer = createReducer(

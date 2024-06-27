@@ -5,8 +5,9 @@ import { SortFacadeService } from '../../services/sort/sort-facade.service';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { distinctUntilChanged } from 'rxjs';
-import { SortTerm } from '../../enums';
+import { SortOption } from '../../enums';
 import { IOption } from '../../interfaces';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -17,38 +18,38 @@ import { IOption } from '../../interfaces';
 export class HeaderComponent implements OnInit {
   options: IOption[] = [
     {
-      id: SortTerm.date,
-      value: `${ this.buildTranslationKey(SortTerm.date) }`,
+      id: SortOption.date,
+      value: this.translateService.instant(this.buildTranslationKey(SortOption.date)),
     },
     {
-      id: SortTerm.status,
-      value: `${ this.buildTranslationKey(SortTerm.status) }`,
+      id: SortOption.status,
+      value: this.translateService.instant(this.buildTranslationKey(SortOption.status)),
     },
     {
-      id: SortTerm.name,
-      value: `${ this.buildTranslationKey(SortTerm.name) }`,
+      id: SortOption.name,
+      value: this.translateService.instant(this.buildTranslationKey(SortOption.name)),
     },
   ];
 
-  iconSrc = 'assets/icons/sort.svg';
-  sortControl: FormControl<SortTerm>;
+  sortControl: FormControl<SortOption>;
 
-  constructor(public dialog: Dialog, private sortFacadeService: SortFacadeService, private destroyRef: DestroyRef) {}
+  constructor(
+    private dialog: Dialog,
+    private sortFacadeService: SortFacadeService,
+    private destroyRef: DestroyRef,
+    private translateService: TranslateService,
+  ) {}
 
   ngOnInit(): void {
-    this.sortControl = new FormControl<SortTerm>(SortTerm.date);
+    this.sortControl = new FormControl<SortOption>(SortOption.date);
 
     this.sortControl.valueChanges
       .pipe(
         distinctUntilChanged(),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((value: SortTerm) => {
-        this.options.filter((option) => {
-          if (option.id === value) {
-            this.sortFacadeService.sort(option.id);
-          }
-        });
+      .subscribe((value: SortOption) => {
+        this.sortFacadeService.sort(value);
       });
   }
 

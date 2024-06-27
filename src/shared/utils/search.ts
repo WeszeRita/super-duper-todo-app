@@ -1,11 +1,11 @@
 import { ITodo } from '@shared';
 
-export function search(array: ITodo[], searchTerm: string) {
-  if (!searchTerm) {
-    return array;
+export function search(todos: ITodo[], searchValue: string) {
+  if (!searchValue) {
+    return todos;
   }
 
-  return array.filter((item: ITodo) => {
-    return item.title.trim().toLowerCase().includes(searchTerm) || item.description.trim().toLowerCase().includes(searchTerm);
+  return todos.filter((todo: ITodo) => {
+    return todo.title.trim().toLowerCase().includes(searchValue) || todo.description.trim().toLowerCase().includes(searchValue);
   });
 }

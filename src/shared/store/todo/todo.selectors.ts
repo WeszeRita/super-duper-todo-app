@@ -4,7 +4,7 @@ import { ITodo } from '../../interfaces/todo.interface';
 import { SearchTermSelectors } from '../search';
 import { SortTermSelectors } from '../sorting';
 import { search, sort } from '../../utils';
-import { IOption } from '@shared';
+import { SortOption } from '@shared';
 
 export const todoFeatureKey = 'todos';
 
@@ -20,9 +20,9 @@ export namespace TodoSelectors {
     selectTodos,
     SearchTermSelectors.selectSearchTerm,
     SortTermSelectors.selectSortTermId,
-    (todos: ITodo[], searchTerm: string, sortTermId: IOption['id']) => {
-      let orderedTodos = search(todos, searchTerm);
-      orderedTodos = sort(orderedTodos, sortTermId);
+    (todos: ITodo[], searchValue: string, sortOptionId: SortOption) => {
+      let orderedTodos = search(todos, searchValue);
+      orderedTodos = sort(orderedTodos, sortOptionId);
 
       const pinnedTodos = orderedTodos.filter((todo) => todo.isPinned);
       const unpinnedTodos = orderedTodos.filter((todo) => !todo.isPinned);

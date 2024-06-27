@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@
 import { IOption, ITodo, Status, TodoFacadeService } from '@shared';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-todo-card',
@@ -10,30 +11,26 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoCardComponent implements OnInit {
+  @Input()
+  todo: ITodo;
+
   statusControl: FormControl<Status>;
   options: IOption[] = [
     {
       id: Status.todo,
-      value: `${this.buildTranslationKey(Status.todo)}`,
+      value: this.translateService.instant(this.buildTranslationKey(Status.todo)),
     },
     {
       id: Status.inProgress,
-      value: `${this.buildTranslationKey(Status.inProgress)}`,
+      value: this.translateService.instant(this.buildTranslationKey(Status.inProgress)),
     },
     {
       id: Status.done,
-      value: `${this.buildTranslationKey(Status.done)}`,
+      value: this.translateService.instant(this.buildTranslationKey(Status.done)),
     }
   ];
 
-  @Input()
-  todo: ITodo;
-
-  get statusClass(): Status {
-    return Status[this.todo.status];
-  }
-
-  constructor(private todoFacadeService: TodoFacadeService, private destroyRef: DestroyRef) {}
+  constructor(private todoFacadeService: TodoFacadeService, private destroyRef: DestroyRef, private translateService: TranslateService) {}
 
   ngOnInit(): void {
     this.statusControl = new FormControl<Status>(this.todo.status);

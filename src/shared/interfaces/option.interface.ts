@@ -1,6 +1,6 @@
-import { SortTerm, Status } from '../enums';
+import { SortOption, Status } from '../enums';
 
 export interface IOption {
-  id: Status | SortTerm;
+  id: Status | SortOption;
   value: string;
 }

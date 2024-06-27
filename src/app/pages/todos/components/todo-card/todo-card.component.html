@@ -3,9 +3,8 @@
 
   <app-dropdown
     [formControl]="statusControl"
-    [name]="buildTranslationKey(todo.status)"
     [options]="options"
-    [statusClass]="statusClass">
+    [initialValue]="todo.status">
   </app-dropdown>
 
   <span class="label">{{ buildTranslationKey('createdAt') | translate }}</span>
