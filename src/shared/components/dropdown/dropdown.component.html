@@ -1,7 +1,7 @@
 <button
-  class="button-title {{ initialValue }}"
+  class="button"
   [cdkMenuTriggerFor]="dropdown">
-  <img src="{{ icon }}">{{ initialValue }}
+  <img [src]="icon">{{ value }}
 </button>
 
 <ng-template #dropdown>
@@ -10,7 +10,7 @@
       *ngFor="let option of options"
       class="option-item"
       cdkMenuItem
-      (click)="setStatus(option.id)">
+      (click)="setValue(option)">
       {{ option.value }}
     </button>
   </div>

@@ -13,3 +13,7 @@
 .btn {
   @apply bg-blue-600 rounded text-white px-1.5 py-1;
 }
+
+::ng-deep button[aria-expanded="true"] {
+  @apply bg-gray-200;
+}

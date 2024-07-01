@@ -16,37 +16,23 @@ import { IOption } from '../../interfaces/option.interface';
 })
 export class DropdownComponent implements ControlValueAccessor {
   @Input()
-  initialValue: string;
-
-  @Input()
   options: IOption[];
-
-  @Input()
-  selectedOption: IOption;
 
   @Input()
   icon: string;
 
-  placeholder: string;
+  value: string;
 
-  private onChange: (value: string) => void = () => {};
+  private onChange: (value: IOption) => void = () => {};
   private onTouched: () => void = () => {};
 
-  setStatus(value: string): void {
-    if (this.initialValue !== value) {
-      this.writeValue(value);
-    }
-    this.options.map((option: IOption) => {
-      if (option.id === value) {
-        this.selectedOption = option;
-      }
-    });
-    this.placeholder =  this.selectedOption.value || this.initialValue;
+  setValue(option: IOption): void {
+    this.writeValue(option);
   }
 
-  writeValue(status: string): void {
-    this.initialValue = status;
-    this.onChange(this.initialValue);
+  writeValue(value: IOption): void {
+    this.onChange(value);
+    this.value = value.value;
   }
 
   registerOnChange(fn: any): void {
