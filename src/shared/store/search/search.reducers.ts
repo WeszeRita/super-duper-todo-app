@@ -11,7 +11,7 @@ export const initialState: ISearchState = {
 
 export const searchReducer = createReducer(
   initialState,
-  on(SearchActions.searchTodos, (state, { searchTerm }) => ({
+  on(SearchActions.search, (state, { searchTerm }) => ({
     ...state,
     searchTerm,
   }))

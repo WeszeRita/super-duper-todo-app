@@ -7,6 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ITodo } from '../../interfaces';
 
 @Component({
   selector: 'app-editable-field',
@@ -15,7 +16,7 @@ import { FormControl } from '@angular/forms';
 })
 export class EditableFieldComponent {
   @Input()
-  label: string;
+  label: Pick<ITodo, 'title' | 'description'>;
 
   @Input()
   placeholder: string;
@@ -35,7 +36,7 @@ export class EditableFieldComponent {
   constructor(private cd: ChangeDetectorRef) {}
 
   enableEditing(): void {
-    this.fieldControl = new FormControl<string>(this.value || '')
+    this.fieldControl = new FormControl<string>(this.value || '');
   }
 
   save(): void {
@@ -46,10 +47,6 @@ export class EditableFieldComponent {
 
   cancel(): void {
     this.resetField();
-  }
-
-  buildTranslationKey(relativeKey: string): string {
-    return `todo-card.${ relativeKey }`;
   }
 
   private resetField(): void {

@@ -13,3 +13,15 @@
 .btn {
   @apply p-1 m-1;
 }
+
+::ng-deep .inProgress button {
+  @apply border border-orange-500 bg-orange-200 text-orange-500;
+}
+
+::ng-deep .todo button {
+  @apply border border-red-500 bg-red-200 text-red-500;
+}
+
+::ng-deep .done button {
+  @apply text-cyan-500 border bg-cyan-200 border-cyan-500;
+}

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Status } from '@shared';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { IOption } from '../../interfaces/option.interface';
 
 @Component({
   selector: 'app-dropdown',
@@ -11,31 +11,28 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       provide: NG_VALUE_ACCESSOR,
       useExisting: DropdownComponent,
       multi: true,
-    }
+    },
   ],
 })
 export class DropdownComponent implements ControlValueAccessor {
-  statusOptions: string[] = Object.keys(Status);
+  @Input()
+  options: IOption[];
 
   @Input()
-  status: Status;
+  icon: string;
 
-  private onChange: (value: string) => void = () => {};
+  value: string;
+
+  private onChange: (value: IOption) => void = () => {};
   private onTouched: () => void = () => {};
 
-  get statusClass(): Status {
-    return Status[this.status];
+  setValue(option: IOption): void {
+    this.writeValue(option);
   }
 
-  setStatus(status: string): void {
-    if (this.status !== status) {
-      this.writeValue(status);
-    }
-  }
-
-  writeValue(status: any): void {
-    this.status = status;
-    this.onChange(this.status);
+  writeValue(value: IOption): void {
+    this.onChange(value);
+    this.value = value.value;
   }
 
   registerOnChange(fn: any): void {
@@ -44,9 +41,5 @@ export class DropdownComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-  }
-
-  buildTranslationKey(relativeKey: string): string {
-    return `todo-card.${ relativeKey }`;
   }
 }

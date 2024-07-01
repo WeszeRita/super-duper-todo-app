@@ -17,6 +17,9 @@ export class TextInputComponent implements ControlValueAccessor {
   @Input()
   value: string;
 
+  @Input()
+  errorMassage: string;
+
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
 
@@ -49,9 +52,5 @@ export class TextInputComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-  }
-
-  buildTranslationKey(relativeKey: string): string {
-    return `addTodoForm.${ relativeKey }`;
   }
 }

@@ -1,1 +1,2 @@
-export * from './normalize.util';
+export * from './search';
+export * from './sort';

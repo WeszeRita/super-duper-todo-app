@@ -1,7 +1,11 @@
 {
   "header": {
+    "searchPlaceholder": "Search...",
     "title": "To do",
-    "addButtonText": "+ new to-do"
+    "addButtonText": "+ new to-do",
+    "name": "Name",
+    "status": "Status",
+    "date": "Date"
   },
   "todo-page": {
     "title": "Todos",
@@ -14,11 +18,9 @@
     "done": "Done",
     "status": "Status:",
     "createdAt": "Created at:",
-    "title": "Title:",
-    "description": "Description:",
+    "titleLabel": "Title:",
+    "descriptionLabel": "Description:",
     "altForIcon": "icon",
-    "titlePlaceholder": "Title",
-    "descriptionPlaceholder": "Description",
     "requiredErrorMassage": "This field is required"
   },
   "addTodoForm": {
@@ -27,9 +29,5 @@
     "descriptionPlaceholder": "Description",
     "requiredErrorMassage": "This field is required",
     "addButtonTitle": "Add to-do"
-  },
-  "search": {
-    "searchInputPlaceholder": "Search...",
-    "altForIcon": "icon"
   }
 }
