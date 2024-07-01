@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IOption } from '../../interfaces/option.interface';
 
@@ -6,6 +6,7 @@ import { IOption } from '../../interfaces/option.interface';
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -16,37 +17,33 @@ import { IOption } from '../../interfaces/option.interface';
 })
 export class DropdownComponent implements ControlValueAccessor {
   @Input()
-  initialValue: string;
-
-  @Input()
   options: IOption[];
-
-  @Input()
-  selectedOption: IOption;
 
   @Input()
   icon: string;
 
-  placeholder: string;
+  value: string;
 
-  private onChange: (value: string) => void = () => {};
+  private onChange: (value: IOption) => void = () => {};
   private onTouched: () => void = () => {};
 
-  setStatus(value: string): void {
-    if (this.initialValue !== value) {
-      this.writeValue(value);
-    }
-    this.options.map((option: IOption) => {
-      if (option.id === value) {
-        this.selectedOption = option;
-      }
-    });
-    this.placeholder =  this.selectedOption.value || this.initialValue;
+  @HostBinding('class.open')
+  private isOpen = false;
+
+  constructor(private cd: ChangeDetectorRef) {}
+
+  toggleDropdown(isOpen: boolean): void {
+    this.isOpen = isOpen;
   }
 
-  writeValue(status: string): void {
-    this.initialValue = status;
-    this.onChange(this.initialValue);
+  setValue(option: IOption): void {
+    this.writeValue(option);
+  }
+
+  writeValue(value: IOption): void {
+    this.onChange(value);
+    this.value = value.value;
+    this.cd.detectChanges();
   }
 
   registerOnChange(fn: any): void {

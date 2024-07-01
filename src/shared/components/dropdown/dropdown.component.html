@@ -1,16 +1,18 @@
 <button
-  class="button-title {{ initialValue }}"
-  [cdkMenuTriggerFor]="dropdown">
-  <img src="{{ icon }}">{{ initialValue }}
+  class="dropdown-button"
+  [cdkMenuTriggerFor]="dropdown"
+  (cdkMenuClosed)="toggleDropdown(false)"
+  (cdkMenuOpened)="toggleDropdown(true)">
+  <img class="icon" [src]="icon">{{ value }}
 </button>
 
 <ng-template #dropdown>
-  <div cdkMenu class="dropdown">
+  <div cdkMenu class="dropdown-options">
     <button
       *ngFor="let option of options"
       class="option-item"
       cdkMenuItem
-      (click)="setStatus(option.id)">
+      (click)="setValue(option)">
       {{ option.value }}
     </button>
   </div>

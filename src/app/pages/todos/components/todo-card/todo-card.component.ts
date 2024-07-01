@@ -14,7 +14,7 @@ export class TodoCardComponent implements OnInit {
   @Input()
   todo: ITodo;
 
-  statusControl: FormControl<Status>;
+  statusControl: FormControl<IOption>;
   options: IOption[] = [
     {
       id: Status.todo,
@@ -33,7 +33,8 @@ export class TodoCardComponent implements OnInit {
   constructor(private todoFacadeService: TodoFacadeService, private destroyRef: DestroyRef, private translateService: TranslateService) {}
 
   ngOnInit(): void {
-    this.statusControl = new FormControl<Status>(this.todo.status);
+    const status = this.options.find((option) => option.id === this.todo.status);
+    this.statusControl = new FormControl<IOption>(status);
 
     this.statusControl.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -48,8 +49,8 @@ export class TodoCardComponent implements OnInit {
     this.todoFacadeService.editTodo({ id: this.todo.id, description } as Partial<ITodo>);
   }
 
-  setStatus(status: Status): void {
-    this.todoFacadeService.editTodo({ id: this.todo.id, status } as Partial<ITodo>);
+  setStatus(option: IOption): void {
+    this.todoFacadeService.editTodo({ id: this.todo.id, status: option.id } as Partial<ITodo>);
   }
 
   togglePinned(): void {

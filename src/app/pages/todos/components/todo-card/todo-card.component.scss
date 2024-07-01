@@ -1,5 +1,18 @@
 :host {
   @apply border-2 w-full p-3 text-slate-400;
+  ::ng-deep {
+    .inProgress button {
+      @apply border border-orange-500 bg-orange-200 text-orange-500;
+    }
+
+    .todo button {
+      @apply border border-red-500 bg-red-200 text-red-500;
+    }
+
+    .done button {
+      @apply text-cyan-500 border bg-cyan-200 border-cyan-500;
+    }
+  }
 }
 
 .label {

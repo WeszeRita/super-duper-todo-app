@@ -2,9 +2,9 @@
   <span class="label">{{ buildTranslationKey('status') | translate }}</span>
 
   <app-dropdown
+    [class]="statusControl.value.id"
     [formControl]="statusControl"
-    [options]="options"
-    [initialValue]="todo.status">
+    [options]="options">
   </app-dropdown>
 
   <span class="label">{{ buildTranslationKey('createdAt') | translate }}</span>

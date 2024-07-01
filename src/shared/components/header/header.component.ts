@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     },
   ];
 
-  sortControl: FormControl<SortOption>;
+  sortControl: FormControl<IOption>;
 
   constructor(
     private dialog: Dialog,
@@ -41,15 +41,15 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.sortControl = new FormControl<SortOption>(SortOption.date);
+    this.sortControl = new FormControl<IOption>(this.options[0]);
 
     this.sortControl.valueChanges
       .pipe(
         distinctUntilChanged(),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((value: SortOption) => {
-        this.sortFacadeService.sort(value);
+      .subscribe((value: IOption) => {
+        this.sortFacadeService.sort(value.id);
       });
   }
 
