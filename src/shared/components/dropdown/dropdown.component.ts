@@ -1,41 +1,49 @@
-import { Component, Input } from '@angular/core';
-import { Status } from '@shared';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { IOption } from '../../interfaces/option.interface';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: DropdownComponent,
       multi: true,
-    }
+    },
   ],
 })
 export class DropdownComponent implements ControlValueAccessor {
-  statusOptions: string[] = Object.keys(Status);
+  @Input()
+  options: IOption[];
 
   @Input()
-  status: Status;
+  icon: string;
 
-  private onChange: (value: string) => void = () => {};
+  value: string;
+
+  private onChange: (value: IOption) => void = () => {};
   private onTouched: () => void = () => {};
 
-  get statusClass(): Status {
-    return Status[this.status];
+  @HostBinding('class.open')
+  private isOpen = false;
+
+  constructor(private cd: ChangeDetectorRef) {}
+
+  toggleDropdown(isOpen: boolean): void {
+    this.isOpen = isOpen;
   }
 
-  setStatus(status: string): void {
-    if (this.status !== status) {
-      this.writeValue(status);
-    }
+  setValue(option: IOption): void {
+    this.writeValue(option);
   }
 
-  writeValue(status: any): void {
-    this.status = status;
-    this.onChange(this.status);
+  writeValue(value: IOption): void {
+    this.onChange(value);
+    this.value = value.value;
+    this.cd.detectChanges();
   }
 
   registerOnChange(fn: any): void {
@@ -44,9 +52,5 @@ export class DropdownComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-  }
-
-  buildTranslationKey(relativeKey: string): string {
-    return `todo-card.${ relativeKey }`;
   }
 }

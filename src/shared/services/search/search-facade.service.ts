@@ -6,7 +6,7 @@ import { SearchActions } from '../../store';
 export class SearchFacadeService {
   constructor(private store: Store) {}
 
-  searchTodo(searchTerm: string): void {
-    this.store.dispatch(SearchActions.searchTodos({ searchTerm }));
+  search(searchTerm: string): void {
+    this.store.dispatch(SearchActions.search({ searchTerm }));
   }
 }

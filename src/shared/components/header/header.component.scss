@@ -3,7 +3,7 @@
 }
 
 .search-sort {
-  @apply m-6;
+  @apply m-6 flex justify-between;
 }
 
 .title {
@@ -12,4 +12,8 @@
 
 .btn {
   @apply bg-blue-600 rounded text-white px-1.5 py-1;
+}
+
+.open{
+  @apply bg-gray-300;
 }

@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
-import { ITodo, Status, TodoFacadeService } from '@shared';
+import { IOption, ITodo, Status, TodoFacadeService } from '@shared';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-todo-card',
@@ -10,36 +11,51 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoCardComponent implements OnInit {
-  statusControl: FormControl<Status>;
-
   @Input()
   todo: ITodo;
 
-  constructor(private todoFacadeService: TodoFacadeService, private destroyRef: DestroyRef) {}
+  statusControl: FormControl<IOption>;
+  options: IOption[] = [
+    {
+      id: Status.todo,
+      value: this.translateService.instant(this.buildTranslationKey(Status.todo)),
+    },
+    {
+      id: Status.inProgress,
+      value: this.translateService.instant(this.buildTranslationKey(Status.inProgress)),
+    },
+    {
+      id: Status.done,
+      value: this.translateService.instant(this.buildTranslationKey(Status.done)),
+    }
+  ];
+
+  constructor(private todoFacadeService: TodoFacadeService, private destroyRef: DestroyRef, private translateService: TranslateService) {}
 
   ngOnInit(): void {
-    this.statusControl = new FormControl<Status>(this.todo.status);
+    const status = this.options.find((option) => option.id === this.todo.status);
+    this.statusControl = new FormControl<IOption>(status);
 
     this.statusControl.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(this.setStatus.bind(this));
   }
 
-  setTitle(title: string): void {
+  setTitle(title: ITodo['title']): void {
     this.todoFacadeService.editTodo({ id: this.todo.id, title } as Partial<ITodo>);
   }
 
-  setDescription(description: string): void {
+  setDescription(description: ITodo['description']): void {
     this.todoFacadeService.editTodo({ id: this.todo.id, description } as Partial<ITodo>);
   }
 
-  setStatus(status: Status): void {
-    this.todoFacadeService.editTodo({ id: this.todo.id, status } as Partial<ITodo>);
+  setStatus(option: IOption): void {
+    this.todoFacadeService.editTodo({ id: this.todo.id, status: option.id } as Partial<ITodo>);
   }
 
   togglePinned(): void {
     if (this.todo.isPinned) {
-      this.todoFacadeService.unpinTodo(this.todo.id)
+      this.todoFacadeService.unpinTodo(this.todo.id);
     } else {
       this.todoFacadeService.pinTodo(this.todo.id);
     }

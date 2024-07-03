@@ -1,13 +1,19 @@
-<button class="todo-status {{ statusClass }}" [cdkMenuTriggerFor]="dropdown">{{ buildTranslationKey(status) | translate }}</button>
+<button
+  class="dropdown-button"
+  [cdkMenuTriggerFor]="dropdown"
+  (cdkMenuClosed)="toggleDropdown(false)"
+  (cdkMenuOpened)="toggleDropdown(true)">
+  <img class="icon" [src]="icon">{{ value }}
+</button>
 
 <ng-template #dropdown>
-  <div class="dropdown" cdkMenu>
+  <div cdkMenu class="dropdown-options">
     <button
-      *ngFor="let statusOption of statusOptions"
+      *ngFor="let option of options"
+      class="option-item"
       cdkMenuItem
-      class="status-item"
-      (click)="setStatus(statusOption)">
-      {{ buildTranslationKey(statusOption) | translate }}
+      (click)="setValue(option)">
+      {{ option.value }}
     </button>
   </div>
 </ng-template>

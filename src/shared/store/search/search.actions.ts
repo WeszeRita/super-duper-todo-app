@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 
 const enum SearchAction {
-  searchTodos = '[Search] Search todo',
+  search = '[Search] Search',
 }
 
 export namespace SearchActions {
-  export const searchTodos = createAction(SearchAction.searchTodos, props<{ searchTerm: string }>());
+  export const search = createAction(SearchAction.search, props<{ searchTerm: string }>());
 }
